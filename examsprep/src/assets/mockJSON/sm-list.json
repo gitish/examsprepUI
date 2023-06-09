@@ -1,0 +1,35 @@
+[
+  {
+    "profileId": "school1",
+    "image": "assets/images/sm/myschool/logo.png",
+    "title": "Colegrave Primary School",
+    "subTitle": "Est 1990",
+    "teachers": [
+      {
+        "name": "Mr. Ben",
+        "title": "Principle",
+        "desig": "",
+        "image": "assets/images/sm/myschool/default.png"
+      },
+      {
+        "name": "Mr. Ben1",
+        "title": "Co-Ordinator",
+        "desig": "",
+        "image": "assets/images/sm/myschool/default.png"
+      },
+      {
+        "name": "Mr. Ben2",
+        "title": "Sr. Manager",
+        "desig": "",
+        "image": "assets/images/sm/myschool/default.png"
+      }
+    ]
+  },
+  {
+    "profileId": "school2",
+    "image": "assets/images/sm/myschool/logo.png",
+    "title": "Mount Teresha",
+    "subTitle": "Est. 1990",
+    "teachers": null
+  }
+]

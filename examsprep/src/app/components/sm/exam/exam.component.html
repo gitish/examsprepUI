@@ -1,0 +1,82 @@
+<div class="container" *ngIf="isAvail; else message" id="dvExamQ">
+  <div id="dvOverlay" class="overlay hide"></div>
+  <div class="row mt-3 rounded border" *ngFor="let resultvalue of results">
+    <div class="col-sm-12 border bg-primary" id="divQ{{resultvalue?.qNo}}">
+      <div *ngIf="resultvalue.isMath">
+        {{resultvalue.qNo}}.
+        <div  [(appMath)]="resultvalue.question"></div>
+      </div>
+
+      <div *ngIf="!resultvalue.isMath">{{resultvalue.qNo}}. {{resultvalue.question}}</div>
+    </div>
+    <div class="col-sm-12">
+      <div class="col-sm-3" *ngFor="let option of resultvalue?.options;">
+        <div *ngIf="option.isMath">
+          {{option?.id}}
+          <input name=q{{resultvalue?.qNo}} type="radio" value="{{option?.id}}"/>
+          <div [(appMath)]="option.value"></div>
+        </div>
+        <div *ngIf="!option.isMath">
+          {{option?.id}}
+          <input name=q{{resultvalue?.qNo}} type="radio" value="{{option?.id}}"/>
+          {{option.value}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer text-center" style="left:0px;width:100%">
+    <div class="container">
+      <div class="row">
+        &nbsp;
+      </div>
+    </div>
+  </footer>
+
+  <div class="text-center footer-exam">
+    <div class="container">
+      <div class="btn-group">
+        <div class="row">
+          <div>
+              <span class="pull-right">
+                <a (click)= "onSubmit()" class="btn btn-info btn-exam" role="button">Submit</a>
+            </span>
+          </div>
+          <div class="qcount {{blinkClass}}">
+            <div id="dvQCount">Count: {{results.length}}</div>
+            <div id="dvTime">{{leftDuration.hours}} h {{leftDuration.minutes}} m {{leftDuration.seconds}} s</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<ng-template #simpleQue>
+  testing
+</ng-template>
+
+<ng-template #message>
+  <div class="container" style="margin-top:40px;margin-bottom:40px;">
+    <div class="col-sm-12">
+      <p><strong>{{subTime?.sub}} </strong> Exam will start soon !! </p>
+      <hr/>
+      <p><strong>{{leftDuration.hours}}h - {{leftDuration.minutes}}m - {{leftDuration.seconds}}s</strong> to go...</p>
+    </div>
+  </div>
+</ng-template>
+
+
+<div bsModal #submitModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center" style="color: #196f77;">
+        <h4>Thank you! Your Paper Submitted</h4>
+
+        <button type="button" routerLink="/ng/sm/{{schId}}" class="btn btn-default" (click)="submitModal.hide()" style="margin-left: 17px;">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

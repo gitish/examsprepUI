@@ -1,0 +1,14 @@
+{
+  "examiners":[
+   {
+      "profileId":"dr-anshuman-suman",
+      "image": "assets/images/ansuman.png",
+      "name": "Dr. Ansuman Suman"
+    },
+    {
+      "profileId":"dr-suresh-bind",
+      "image": "https://biharnewslive.com/wp-content/uploads/2021/02/IMG-20210217-WA0086.jpg",
+      "name": "Dr Suresh Bind"
+     }
+   ]
+}

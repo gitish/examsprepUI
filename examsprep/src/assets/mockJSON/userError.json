@@ -1,0 +1,7 @@
+{
+  "error":{
+    "errorCode": "12345",
+    "errorMsg": "Unable to create user. Contact Admin please"
+  },
+  "status": "inactive"
+}

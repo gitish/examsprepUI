@@ -1,0 +1,64 @@
+<!-- Contact Section-->
+<section class="page-section" id="contact">
+  <div class="container">
+      <!-- Contact Section Heading-->
+      <h4 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h4>
+      <hr/>
+      <!-- Contact Section Form-->
+      <div class="row">
+          <div class="col-lg-8 mx-auto">
+                  <div class="control-group">
+                      <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                          <label>Name</label><input class="form-control" id="name" type="text" placeholder="Name" required="required" data-validation-required-message="Please enter your name." [(ngModel)]='name'/>
+                          <p class="help-block text-danger"></p>
+                      </div>
+                  </div>
+                  <div class="control-group">
+                      <div class="form-group floating-label-form-group controls mb-0 pb-1">
+                          <label>Email Address</label><input class="form-control" id="email" type="email" placeholder="Email Address" required="required" data-validation-required-message="Please enter your email address." [(ngModel)]='email'/>
+                          <p class="help-block text-danger"></p>
+                      </div>
+                  </div>
+                  <div class="control-group">
+                      <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                          <label>Phone Number</label><input class="form-control" id="phone" type="tel" placeholder="Phone Number" required="required" data-validation-required-message="Please enter your phone number." [(ngModel)]='mob'/>
+                          <p class="help-block text-danger"></p>
+                      </div>
+                  </div>
+                  <div class="control-group">
+                      <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                          <label>Message ({{100-msg.length}} Char Max)</label>
+                        <textarea class="form-control"
+                                  id="message" rows="3"
+                                  maxlength="100"
+                                  placeholder="Message"
+                                  required="required" d
+                                  ata-validation-required-message="Please enter a message."
+                                  [(ngModel)]='msg'
+                                  ng-keypress="updateBody($event)">
+                        </textarea>
+                        <p class="help-block text-danger"></p>
+                      </div>
+                  </div>
+                  <br />
+                  <div id="success"></div>
+                  <div class="form-group"><button class="btn btn-primary btn-md" id="sendMessageButton" type="button" (click)="submit()">Send</button></div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<div bsModal #submitModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center" style="color: #196f77;">
+        <h4>Thank you for writing us!!</h4>
+        <p>One of our executive will get in touch with you soon !!</p>
+        <button type="button" class="btn btn-default" (click)="submitModal.hide()" style="margin-left: 17px;">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

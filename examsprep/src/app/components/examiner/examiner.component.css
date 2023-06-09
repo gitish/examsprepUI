@@ -1,0 +1,16 @@
+.exam-panel{
+  padding-top:.5rem;
+  padding-bottom:.5rem;
+}
+
+.profile-img {
+  height: 120px;
+  margin:5px
+}
+
+.userInfo{
+  margin-top: 35px;
+  text-align: justify;
+  padding-left: 1em;
+  padding-right: 1em;
+}

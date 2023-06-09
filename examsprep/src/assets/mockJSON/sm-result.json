@@ -1,0 +1,32 @@
+ {
+    "errorCode": 0,
+    "errorMsg": null,
+    "token": null,
+    "subjectWiseMarks": [
+      {
+        "subject": "mathematics",
+        "obtainMarks": 2,
+        "totalMarks": 5
+      },
+      {
+        "subject": "hindi",
+        "obtainMarks": 1,
+        "totalMarks": 5
+      },
+      {
+        "subject": "Sanskrit",
+        "obtainMarks": 2,
+        "totalMarks": 5
+      },
+      {
+        "subject": "Physics",
+        "obtainMarks": 5,
+        "totalMarks": 5
+      }
+    ],
+    "totalEarnedMarks": 10,
+    "totalMarks": 20,
+    "percentMarks": 50,
+    "session": null,
+    "finalResult": "PASS"
+ }

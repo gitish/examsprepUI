@@ -1,0 +1,16 @@
+.author-img {
+   width: 100px;
+   height: 100px;
+}
+
+.divider-custom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+  margin-left:20px;
+  background-color:#1abc9b;
+}

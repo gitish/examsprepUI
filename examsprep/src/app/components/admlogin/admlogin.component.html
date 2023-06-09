@@ -1,0 +1,38 @@
+<app-page-header></app-page-header>
+<div class="rounded border">
+  <div class="col-sm-12 border bg-primary">Admin Login</div>
+  <div class="col-sm-12">
+    &nbsp;
+  </div>
+  <div class="col-sm-12">
+    <div class="col-sm-3">
+      <select [(ngModel)]="examinerId" class="paperSelect admin-input form-control">
+        <option value="0" selected="selected">select Admin</option>
+        <option *ngFor="let opt of profiles" value="{{opt.profileId}}">{{opt.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    &nbsp;
+  </div>
+  <div class="col-sm-12">
+    <div class="col-sm-3">
+      <input type="password" [(ngModel)]='password'  class="admin-input form-control" placeholder="Password:">
+    </div>
+  </div>
+  <div class="col-sm-12">
+    &nbsp;
+  </div>
+  <div class="col-sm-12">
+    <div class="col-sm-3 btn-group">
+        <button type="button"  class="btn btn-info" (click)="validate()">Validate User</button>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    &nbsp;
+  </div>
+  <div class="col-sm-12">
+      Forgot Your Credential? Check with Super Admin.
+  </div>
+</div>
+

@@ -1,0 +1,27 @@
+<div class="container" id="dvExamQ">
+  <div id="dvOverlay" class="overlay hide"></div>
+  <div class="row mt-3 rounded border" *ngFor="let resultvalue of results">
+
+    <div class="col-sm-12 border {{resultvalue?.scheme}}" id="divQ{{resultvalue?.qNo}}">
+      <div *ngIf="resultvalue.isMath">
+        {{resultvalue.qNo}}.
+        <div  [(appMath)]="resultvalue.question"></div>
+      </div>
+      <div *ngIf="!resultvalue.isMath">{{resultvalue.qNo}}. {{resultvalue.question}}</div>
+    </div>
+    <div class="col-sm-12">
+      <div class="col-sm-3" *ngFor="let option of resultvalue?.options;">
+        <div *ngIf="option.isMath" style="background-color:{{option?.color}}">
+          <strong>{{option?.id}}. </strong>
+          <div [(appMath)]="option.value"></div>
+        </div>
+        <div *ngIf="!option.isMath" style="background-color:{{option?.color}}">
+          <strong>{{option?.id}}. </strong>
+          {{option.value}}
+        </div>
+      </div>
+      <div><strong>Correct Ans: {{resultvalue?.ans}}</strong></div>
+    </div>
+  </div>
+
+</div>

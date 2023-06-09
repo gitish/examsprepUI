@@ -1,0 +1,34 @@
+{
+  "paper":{
+    "qnAs":[
+      {
+        "qNo":"1",
+        "question":" निम्न में से कब ग्रीष्म ओलंपिक खेल बाधित रहा?",
+        "options":[
+          {"id":"a","value":" 1912"},
+          {"id":"b","value":" 1952"},
+          {"id":"c","value":"1980"},
+          {"id":"d","value":"1988"}],
+        "ans":"c",
+        "incorrect":false
+      },
+      {
+        "qNo":"2",
+        "question":" ओलंपिक के 5 छल्लों में काले रंग का छल्ला किस महादेश को इंगित करता है?",
+        "options":[
+          {"id":"a","value":" अमेरिका"},
+          {"id":"b","value":" एशिया"},
+          {"id":"c","value":" अफ्रीका"},
+          {"id":"d","value":" यूरोप"}],
+        "ans":"c",
+        "incorrect":false
+      }
+    ]
+  },
+  "timeDetails":{
+    "startTime":"10:30",
+    "duration":"30",
+    "status":true,
+    "leftTime":"1"
+  }
+}

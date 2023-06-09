@@ -1,0 +1,29 @@
+que:
+What is the value of <math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><msup><mfenced><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></mfenced><mn>2</mn></msup></msqrt></math>
+Options:
+a.<math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><msup><mfenced><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></mfenced><mn>2</mn></msup></msqrt></math>
+b.(a+b)
+c.(a+b)^2
+d.none
+Ans: b
+
+que:
+    A person has purchased 4 dozen banana in Rs. 60. He want to save 20%.
+    How many banana will he sell in Rs. 10 to gain 20%.
+    Options:
+    a. 5 bananas
+    b. 10 bananas
+    c. 6 bananas
+    d. Can not be calculated
+    Ans: d
+
+
+
+que:
+Find the value of x when y=2 and (x+y)^2=25.
+Options:
+a.3
+b.4
+c.5
+d.0
+Ans: a

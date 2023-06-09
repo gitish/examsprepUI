@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row mt-3 rounded border">
+    <div class="col-sm-12 border bg-primary" id="howEasy">
+      आपको इस Exam Application का उपयोग करना कैसा लगा।
+    </div>
+    <div class="col-sm-12">
+      <div class="col-sm-3">
+        <input name='q1' type="radio" value="vEasy"/> बहुत आसान
+      </div>
+      <div class="col-sm-3">
+        <input name='q1' type="radio" value="easy"/> आसान
+      </div>
+      <div class="col-sm-3">
+        <input name='q1' type="radio" value="nEasy"/> आसान नहीं है
+      </div>
+      <div class="col-sm-3">
+        <input name='q1' type="radio" value="vDfclt"/> बहुत कठिन
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3 rounded border">
+    <div class="col-sm-12 border bg-primary" id="dvUse">
+      क्या आप अपने दोस्तों को इस Exam Application को use करने की सलाह देंगे।
+    </div>
+    <div class="col-sm-12">
+      <div class="col-sm-3">
+        <input name='q2' type="radio" value="yes"/> हाँ
+      </div>
+      <div class="col-sm-3">
+        <input name='q2' type="radio" value="bit"/> थोड़ा सा
+      </div>
+      <div class="col-sm-3">
+        <input name='q2' type="radio" value="NA"/> निश्चित नहीं
+      </div>
+      <div class="col-sm-3">
+        <input name='q2' type="radio" value="no"/> बिल्कुल नहीं
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3 rounded border">
+    <div class="col-sm-12 border bg-primary" id="dvComments">
+      आपकी ओर से कोई अन्य Comments ({{100-msg.length}} Max)
+    </div>
+    <div class="col-sm-12">
+      <div class="col-sm-3">
+        <textarea class="form-control"
+                  id="message" rows="2"
+                  cols="30"
+                  maxlength="100"
+                  placeholder="Message"
+                  required="required" d
+                  ata-validation-required-message="Please enter a message."
+                  [(ngModel)]='msg'
+                  ng-keypress="updateBody($event)">
+        </textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center footer-exam">
+    <div class="container">
+      <div class="btn-group">
+        <div class="row">
+          <div>
+            <span class="pull-right">
+              <button class="btn btn-info btn-exam" (click)="onSubmit()">Submit</button>
+              <button type="button" routerLink="/ng/exams" class="btn btn-info" (click)="back()" style="margin-left: 17px;">Back</button>
+          </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

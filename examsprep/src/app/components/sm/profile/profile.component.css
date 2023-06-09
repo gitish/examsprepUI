@@ -1,0 +1,43 @@
+.profile-img {
+  height: 70px;
+  margin:5px
+}
+
+.log{
+    height: 170px;
+    margin:5px
+}
+
+.author-img {
+   width: 70px;
+   height: 70px;
+}
+.author-img-center {
+  margin: 0 auto;
+}
+.main-img {
+   width: 100%;
+}
+.main-img-height {
+  max-height: 400px;
+}
+
+.divider-custom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+  margin-left:20px;
+}
+
+.btnmargin{
+  margin-left: 1px;
+}
+
+.center {
+  text-align: center;
+  width: 100%;
+}

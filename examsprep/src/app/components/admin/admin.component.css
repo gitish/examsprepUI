@@ -1,0 +1,61 @@
+.mat-tab-group {
+  margin-bottom: 48px;
+  color: #0FF;
+  background-color:gray
+}
+
+.admin-input {
+    width: 100%;
+    max-width: 500px;
+}
+.admin-input-q {
+    width: 100%;
+    max-width: 500px;
+    height: 200px
+}
+.admin-input-r {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    max-height:500px;
+}
+.adm-button {
+  margin-top: 5px;
+  max-width: 500px;
+}
+
+.admin-modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 5px 5px;
+}
+
+h3 {
+  margin: 0 0 10px;
+}
+
+pre {
+  background-color: #f5f5f5;
+  padding: 15px;
+}
+
+#previewExam {
+  height:335px;
+  width:100%;
+  max-width:500px;
+}
+
+.admin-exam-cell{
+  width:165px;
+}
+.admin-exam-cell-s{
+  width:90px;
+}
+.admin-exam-cell-vs{
+  width:50px;
+}
+.admin-exam-table {
+  margin-left:20px;
+  width: 99%;
+  min-height:300px;
+}

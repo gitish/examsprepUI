@@ -1,0 +1,112 @@
+<div class="container">
+  <div class="row mt-3 userInfo">
+      <p style="margin-top: 35px;text-align: justify;">
+        <img src="{{examinerDetail?.image}}" class="img-circle profile-img" alt="Cinque Terre" align="left"/> {{examinerDetail?.quote}}
+      </p>
+      <div *ngIf="examinerDetail.isValidMeet;then content"></div>
+  </div>
+  
+  <ng-template #content><a href="https://meet.google.com/bdh-qyna-cxm" class="btn btn-info" role="button" target="_blank">Online Class</a></ng-template>
+
+  
+      <!-- <p>{{examinerDetail?.signature}}</p> -->
+
+  <div class="row mt-3 rounded border">
+    <div class="col-sm-12 border bg-primary">Current Exam</div>
+    <div class="col-sm-12 exam-panel">
+      <div *ngFor="let examtime of examinerDetail?.examtime"><strong>{{examtime?.time}} </strong> {{examtime?.subj}}</div>
+      <div class="btn-group">
+        <!--<a href="/ng/newexam/{{examinerDetail?.profileId}}" class="btn btn-info" role="button">Current Exam</a>-->
+        <a (click)="getCurrentExam()" class="btn btn-info" role="button">Current Exam</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3 rounded border">
+    <div class="col-sm-12 border bg-primary">Check Previous Exam for practise</div>
+    <div class="col-sm-12 exam-panel">
+      <select name="repeatSelect" [(ngModel)]="examId" id="repeatSelect" class="oldExamSelect">
+        <option value="0">select one exam</option>
+        <option *ngFor="let opt of data"  value="{{opt.id}}">{{opt.name}}</option>
+      </select>
+      <div class="btn-group" style="margin-left:10px;">
+        <a  (click)= "getOldExam()"   class="btn btn-info" role="button">Show</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="socialContent" class="text-center" style="padding-top: 30px;">
+    <p>Connect me</p>
+    <a *ngFor="let skey of getSocialMap(examinerDetail?.socials)" href="{{examinerDetail.socials[skey]}}" class="pop share-icon share-icon-{{skey}}" style="display: inline-block;"></a>
+  </div>
+    <div class="container d-flex align-items-left flex-column">
+      &nbsp;
+    </div>
+</div>
+
+<div bsModal #loginModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center" style="color: #196f77;">
+        <div class="col-sm-12">
+         <input name='mobile' placeholder="Mobile Number:" type="text" [(ngModel)]='personMobile' (keypress)="keyPress($event)" minlength=10 maxlength=10/>
+        </div>
+        <div class="col-sm-12">&nbsp;</div>
+        <div class="col-sm-12">
+          <input name='pass' placeholder="Password" type="password" [(ngModel)]='personPassword'/>
+        </div>
+        <div class="col-sm-12">&nbsp;</div>
+        <div class="col-sm-12">
+          <div class="{{msgType}}">{{loginUserMsg}}</div>
+        </div>
+        <div class="col-sm-12">&nbsp;</div>
+        <div class="col-sm-12">
+          <button type="button"  class="btn btn-info" (click)="login()" style="margin-left: 17px;">Login</button> &nbsp;
+          <button (click)= "showNewUserPage()" class="btn btn-info" type="button">Create New User</button>
+        </div>
+        <div class="col-sm-12">&nbsp;</div>
+        <div class="col-sm-12">
+          <a (click)= "loginModal.hide()" role="button"> Forgot password? Contact Admin. </a>
+        </div>
+
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+
+<div bsModal #newUserModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center" style="color: #196f77;">
+        <div class="col-sm-12">
+          <input name='mobile' placeholder="Mobile Number:" type="text" [(ngModel)]='personMobile' (keypress)="keyPress($event)" minlength=10 maxlength=10/>
+        </div>
+        <div class="col-sm-12">&nbsp;</div>
+        <div class="col-sm-12">
+          <input name='name' placeholder="Name" type="text" [(ngModel)]='personName'/>
+        </div>
+        <div class="col-sm-12">&nbsp;</div>
+        <div class="col-sm-12">
+          <input name='pass' placeholder="Password" type="password" [(ngModel)]='personPassword'/>
+        </div>
+        <div class="col-sm-12">&nbsp;</div>
+        <div class="col-sm-12">
+          <div class="{{msgType}}">{{createUserMsg}}</div>
+        </div>
+        <div class="col-sm-12">&nbsp;</div>
+        <div class="col-sm-12" style="padding-right: 0rem; padding-left: 0rem;">
+          <button type="button"  class="btn btn-info" (click)="createNewUser()">Create User</button> &nbsp;
+          <button type="button"  class="btn btn-info" (click)= "showLoginPage()">Show Login</button>
+        </div>
+
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

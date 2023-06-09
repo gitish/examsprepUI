@@ -1,0 +1,15 @@
+{
+  "name": "Shailja",
+  "pass": "123456",
+  "registerDevice": [
+    {
+      "ip": "84.71.48.114",
+      "deviceType": "mobile"
+    },
+    {
+      "ip": "84.71.48.114",
+      "deviceType": "desktop"
+    }
+  ],
+  "status": "inactive"
+}
