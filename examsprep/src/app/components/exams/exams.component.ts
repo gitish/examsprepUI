@@ -10,6 +10,15 @@ import { Router } from '@angular/router';
 })
 export class ExamsComponent implements OnInit {
   results: any;
+  defaultuser: Object = {
+    id: 0,
+    name: "It Could Be You",
+    status: "active",
+    image: "assets/images/unknown_.png",
+    quote: "Your quotation",
+    designation: "Your Designation",
+    link: "/ng/contact"
+  }
   subscription: Subscription;
   constructor(private examService: ExamService,private router: Router) { }
 
@@ -20,7 +29,8 @@ export class ExamsComponent implements OnInit {
   getExaminerProfiles(){
     this.subscription = this.examService.getExaminerProfile().subscribe(message => {
       console.log(message);
-      this.results=message["examiners"];
+      this.results=message;
+      this.results.push(this.defaultuser);
     },err=>{throw err;});
   }
 

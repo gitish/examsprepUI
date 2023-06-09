@@ -57,12 +57,12 @@ export class NewexamComponent
 
   ngOnInit(): void {
     this.getQuestions();
-    this.getQuestionsList();
+    
   }
   onSubmit() {
     if(this.globalData.loginDetail) {
-      this.personName= this.globalData.loginDetail.name;
-      this.personMobile= this.globalData.loginDetail.mobile;
+      this.personName= this.globalData.loginDetail?.name;
+      this.personMobile= this.globalData.loginDetail?.mobile;
       this.submitQuestion();
     } else {
       this.messageforpopupinfo = 'Seems You are logged out. Login again to submit your answers';
@@ -97,13 +97,14 @@ export class NewexamComponent
       message => {
         if(message["status"]== "Failure"){
           this.isAvail=false;
+          this.getQuestionsList();
         }else{
-          this.results = message["paper"].qnAs;
+          this.results = message["questions"];
           this.isAvail=true;
           this.config = {
-            totalItems: this.results.length,
-            timeLeft: message["timeDetails"].leftTime,
-            examId: message["examId"]
+            totalItems: message["questions"].length,
+            timeLeft: message["timeDetails"]?.leftTime,
+            examId: message["id"]
           };
           this.startTimeCountDown(this.config.timeLeft,new Date().getTime());
         }
@@ -117,17 +118,17 @@ export class NewexamComponent
     var count=0;
     for(var i=1;i<=total;i++){
         if(data!=""){
-            data=data+",";
+            data=data+";";
         }
         var optName='q'+i;
-        var radioValues = document.getElementsByName(optName);
-        var radioValue = this.getRadioVal(radioValues);
-        data=data+optName+":"+radioValue;
+        var options = document.getElementsByName(optName);
+        var radioValue = this.getRadioVal(options);
+        data=data+i+":"+radioValue;
         if(radioValue!=undefined){
             count++;
         }
     }
-
+    console.log("ans: " + data);
     var formData={"name":this.personName,"mobile":this.personMobile,"answers" : data};
     var result = this.examService.postExam(formData,this.examinerId,this.config.examId).subscribe(res=>{
       if(res){
@@ -142,12 +143,17 @@ export class NewexamComponent
   }
 
   getRadioVal(radios){
+    var result="";
     for (var i = 0, length = radios.length; i < length; i++) {
       if (radios[i].checked) {
-        return radios[i].value;
-        break;
+        if(result==""){
+          result=radios[i].value
+        }else{
+          result=result+","+radios[i].value
+        }
       }
     }
+    return result;
   }
 
   startTimeCountDown(timeLeft,startTime){

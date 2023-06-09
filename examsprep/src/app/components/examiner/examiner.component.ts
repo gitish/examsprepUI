@@ -80,21 +80,13 @@ export class ExaminerComponent implements OnInit {
           signature : message["signatue"],
           socials:message["socials"],
           examtime:message["examtime"],
-          isValidMeet:message["meet"]
-
+          liveClass:message["liveClass"],
+          isValidLivelink:message["liveClass"]!=''?true:false
         },
         this.getQuestionsList(this.examinerDetail.profileId);
       }
+      
     );
-  }
-
-  getSocialMap(socials) {
-    if(socials !=null) {
-      return Object.keys(socials).map((key)=>{ return key});
-    }
-    else {
-      return null;
-    }
   }
 
   getQuestionsList(profileId){

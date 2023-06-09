@@ -1,0 +1,31 @@
+{
+    "id": "5f09706cd97a127f7ff6e7cf",
+    "profileId":"dr-ansuman-suman",
+    "name": "Dr. Ansuman Suman",
+    "image": "assets/images/ansuman.png",
+    "meet":"https://meet.google.com/bdh-qyna-cxm",
+    "socials": {
+      "youtube": "https://www.youtube.com/user/anshuman579",
+      "facebook": "https://www.facebook.com/Dr-Anshuman-Suman-113924390307380",
+      "tumblr": "https://t.me/Dranshumansuman"
+    },
+    "quote": "",
+    "signatue": "डॉ. अंशुमान सुमन",
+    "examtime": [
+      {
+        "time": "Every Sunday (10 AM):",
+        "subj": "UPSC, BPSC, NET, JPSC"
+      },
+      {
+        "time": "Every Thursday(10 AM):",
+        "subj": "General Exams"
+      }
+    ],
+    "subjects": [
+      "BPSC",
+      "UPSC",
+      "DAROGA",
+      "NET"
+    ],
+    "status": "active"
+  }

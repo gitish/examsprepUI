@@ -1,31 +1,29 @@
 {
-  "id": "5f09706cd97a127f7ff6e7cf",
-  "profileId":"dr-ansuman-suman",
-  "name": "Dr. Ansuman Suman",
+  "id": 2,
+  "name": "Dr. Anshuman Suman",
+  "status": "active",
+  "profileId": "dr_anshuman_suman",
   "image": "assets/images/ansuman.png",
-  "meet":"https://meet.google.com/bdh-qyna-cxm",
-  "socials": {
-    "youtube": "https://www.youtube.com/user/anshuman579",
-    "facebook": "https://www.facebook.com/Dr-Anshuman-Suman-113924390307380",
-    "tumblr": "https://t.me/Dranshumansuman"
-  },
   "quote": "यह प्लेटफार्म उन लोगों के लिए है, जो जीवन में रुकना और हारना नहीं सीखा है। आप हमारे साथ जुड़ सकते हैं यदि आप यूपीएससी,बीपीएससी, नेट,जेआरएफ,बिहार दरोगा,एसएससी CGL, Railway या किसी अन्य प्रतियोगिता हेतु प्रयासरत हैं। Arise Awake and Stop not till the Goal is acieved",
-  "signatue": "डॉ. अंशुमान सुमन",
-  "examtime": [
+  "designation": "Professor",
+  "phone": "+91 7048148970",
+  "email": "anshuman.suman@gmail.com",
+  "pwd": "test123",
+  "message": "Set your goal and never stop until you acchieve your goal",
+  "liveClass" : "https://meet.google.com/bdh-qyna-cxm",
+  "socials": [
     {
-      "time": "Every Sunday (10 AM):",
-      "subj": "UPSC, BPSC, NET, JPSC"
+      "name": "youtube",
+      "link": "https://www.youtube.com/user/anshuman579"
     },
     {
-      "time": "Every Thursday(10 AM):",
-      "subj": "General Exams"
+        "name": "facebook",
+        "link": "https://www.facebook.com/Dr-Anshuman-Suman-113924390307380"
+    },
+    {
+        "name": "tumblr",
+        "link": "https://t.me/Dranshumansuman"
     }
   ],
-  "subjects": [
-    "BPSC",
-    "UPSC",
-    "DAROGA",
-    "NET"
-  ],
-  "status": "active"
+  "headcount": 150
 }

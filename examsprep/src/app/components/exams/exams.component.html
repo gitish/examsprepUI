@@ -10,24 +10,52 @@
     </div>
     <!-- Portfolio Grid Items-->
 
-      <div class="row"  *ngFor="let resultvalue of results">
+      <div class="row m-3 border rounded"  *ngFor="let resultvalue of results">
           <!-- Portfolio Item 1-->
-        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-          <a routerLink="/ng/examiner/{{resultvalue.profileId}}"><img src="{{resultvalue.image}}" class="img-circle" alt="{{resultvalue.name}}" style="height: 175px;"/></a>
+        <div class="portfolio-item-caption d-flex align-items-center justify-content-left h-100 w-50">
+          <div *ngIf="resultvalue.link==undefined">
+            <a routerLink="/ng/examiner/{{resultvalue.profileId}}">
+              <img src="{{resultvalue.image}}"
+              class="img-circle" alt="{{resultvalue.name}}" style="height: 120px;"/></a>
+          </div>
+          
+          <div *ngIf="resultvalue.link">
+            <a routerLink="/ng/contact">
+              <img src="{{resultvalue.image}}"
+              class="img-circle" alt="{{resultvalue.name}}" style="height: 120px;"/></a>
+          </div>
+
+         
+
+        </div>  
+        <div class="portfolio-item-caption d-flex align-items-center justify-content-left h-100 w-50">
+          <div class="row">
+            <div class="portfolio-item-caption flex-column align-items-center justify-content-center h-100 w-100">
+              <strong>{{resultvalue.designation}}</strong>
+            </div>
+            <div class="portfolio-item-caption flex-column align-items-center justify-content-center h-100 w-100">
+              <i>{{resultvalue.quote}} </i>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-item-caption d-flex align-items-center justify-content-left h-100 w-100">
+          {{resultvalue.name}}
         </div>
       </div>
-
-    <div class="row">
-      <!-- Portfolio Item 1-->
-      <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-        <a routerLink="/ng/contact"><img src="assets/images/unknown_.png" class="img-circle" alt="add your image" style="height: 175px;"/></a>
-      </div>
-    </div>
 
     <div class="container d-flex align-items-center flex-column">
       <!-- Masthead Avatar Image--><!-- Masthead Heading-->
       <h3>&nbsp;</h3>
     </div>
+
+    <ng-template #examinerContent>
+      
+    </ng-template>
+
+    <ng-template #examinerDefault>
+      
+    </ng-template>
+
 
   </div>
 </section>

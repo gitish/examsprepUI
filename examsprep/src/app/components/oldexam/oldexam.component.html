@@ -6,31 +6,16 @@
           <div class="col-sm-12">{{qna?.qNo}}. {{qna?.question}}</div>
           <div class="col-sm-12" *ngFor="let opt of qna.options">
             <div class="col-sm-12">
-              {{opt?.id}}. {{opt?.value}} <span *ngIf="opt?.id===qna?.ans"> <i class="fas fa-check"></i></span>
+              {{opt?.id}}. {{opt?.value}} <span *ngIf="qna?.ans.includes(opt?.id)"> <i class="fas fa-check"></i></span>
             </div>
           </div>
-          <div class="col-sm-12" *ngIf="qna?.remarks">
-            Remark: {{qna?.remarks}}
+          <div class="col-sm-12 border round" *ngIf="qna?.remarks">
+            <i class="fas fa-info-circle"></i>{{qna?.remarks}}
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!--<div class="row mt-3 rounded border" *ngFor="let resultvalue of results; let index = index;">
-     <div class="col-sm-12 border bg-primary" id="divQ{{resultvalue?.qNo}}">{{resultvalue?.qNo}} {{resultvalue.question}}</div>
-     <div class="col-sm-12">
-        <div class="col-sm-3" *ngFor="let option of resultvalue?.options;">{{option?.id}} <input name=q{{resultvalue?.qNo}} type="radio" value="{{option?.id}}"/>&nbsp;{{option?.value}}</div>
-     </div>
-   </div>
-  <div class="text-center footer-exam">
-    <div class="container">
-      <div class="btn-group">
-        <div class="row">
-          <div> <span class="pull-right"> <a class="btn btn-info btn-exam" role="button" id="btnSubmitQuestions" (click)="showAnswer()">Show Answer</a></span></div>
-        </div>
-      </div>
-    </div>
-  </div>-->
 </div>
 <ng-template #message>
   <div class="container" style="margin-top:40px;margin-bottom:40px;">

@@ -91,11 +91,11 @@ export class ExamService {
 
   authenticateUser(examinerId,loginData) {
     console.log("loginData:"+JSON.stringify(loginData));
-    return this.postApiResponse(`v1/exam/user/login/${examinerId}`,loginData,"userError");
+    return this.postApiResponse(`v1/exam/user/login/${examinerId}`,loginData,"user");
   }
   createUser(examinerId,loginData) {
     console.log("loginData:"+JSON.stringify(loginData));
-    return this.postApiResponse(`v1/exam/user/create/${examinerId}`,loginData,"userError");
+    return this.postApiResponse(`v1/exam/user/create/${examinerId}`,loginData,"user");
   }
 
   submitMessage(data){

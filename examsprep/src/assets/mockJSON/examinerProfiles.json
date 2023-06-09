@@ -1,14 +1,20 @@
-{
-  "examiners":[
-   {
-      "profileId":"dr-anshuman-suman",
+[
+  {
+      "id": 2,
+      "name": "Dr. Anshuman Suman",
+      "profileId": "dr_anshuman_suman",
+      "status": "active",
       "image": "assets/images/ansuman.png",
-      "name": "Dr. Ansuman Suman"
-    },
-    {
-      "profileId":"dr-suresh-bind",
-      "image": "https://biharnewslive.com/wp-content/uploads/2021/02/IMG-20210217-WA0086.jpg",
-      "name": "Dr Suresh Bind"
-     }
-   ]
-}
+      "quote": "Run till you win",
+      "designation": "Professor In TNB Collage Bhagalpur"
+  },
+  {
+      "id": 1,
+      "name": "Shailendra Shail",
+      "profileId": "shailendra_shail",
+      "status": "active",
+      "image": "assets/images/me.png",
+      "quote": "born to win",
+      "designation": "Architect"
+  }
+]

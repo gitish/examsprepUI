@@ -44,34 +44,11 @@ export class OldexamComponent{
         if(message["status"]== "Failure"){
           this.isAvail=false;
         }else{
-          this.results = message["paper"].qnAs;
+          this.results = message["questions"];
           this.isAvail=true;
-          this.config = {
-            totalItems: message["paper"].qnAs.length
-          };
         }
       },err=>{throw err;}
     );
-  }
-
-  showAnswer(){
-    var total=this.config.totalItems;
-    var data="";
-    var count=0;
-    for(var i=1;i<=total;i++){
-      var optName='q'+i;
-      var radioValues = document.getElementsByName(optName);
-      var radioValue = this.getRadioVal(radioValues);
-      if(radioValue===undefined)continue;
-      var id='#divQ'+i;
-      let el = document.querySelector(id);
-      el.classList.remove('bg-primary', 'bg-success', 'bg-danger');
-      if(this.results[i-1].ans==radioValue){
-        el.classList.add('bg-success');
-      }else{
-        el.classList.add('bg-danger');
-      }
-    }
   }
 
   getRadioVal(radios){

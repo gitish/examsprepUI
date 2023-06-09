@@ -1,50 +1,89 @@
 {
-  "paper":{
-    "qnAs":[
+  "id": "2",
+  "title": "Paper for Darago",
+  "questions": [
       {
-        "qNo":"1",
-        "question":" निम्न में से कब ग्रीष्म ओलंपिक खेल बाधित रहा?",
-        "options":[
-          {"id":"a","value":" 1912"},
-          {"id":"b","value":" 1952"},
-          {"id":"c","value":"1980"},
-          {"id":"d","value":"1988"},
-          {"id":"e","value":"1988"}
-        ],
-        "ans":"e",
-        "incorrect":false
+          "qNo": 1,
+          "question": "What is your name dear friend?",
+          "options": [
+              {
+                  "id": "a",
+                  "value": "shail"
+              },
+              {
+                  "id": "b",
+                  "value": "test"
+              },
+              {
+                  "id": "c",
+                  "value": "best"
+              },
+              {
+                  "id": "d",
+                  "value": "none"
+              }
+          ],
+          "ans": [
+              "b",
+              "c"
+          ],
+          "remarks": "This is the one by which you are being called",
+          "status": ""
       },
       {
-        "qNo":"2",
-        "question":" ओलंपिक के 5 छल्लों में काले रंग का छल्ला किस महादेश को इंगित करता है?",
-        "options":[
-          {"id":"a","value":" अमेरिका"},
-          {"id":"b","value":" एशिया"},
-          {"id":"c","value":" अफ्रीका"},
-          {"id":"d","value":" यूरोप"}],
-        "ans":"c",
-        "incorrect":false
+          "qNo": 2,
+          "question": "Where do your live?",
+          "options": [
+              {
+                  "id": "a",
+                  "value": "US"
+              },
+              {
+                  "id": "b",
+                  "value": "London"
+              },
+              {
+                  "id": "c",
+                  "value": "India"
+              },
+              {
+                  "id": "d",
+                  "value": "Brazil"
+              }
+          ],
+          "ans": [
+              "a"
+          ],
+          "status": ""
       },
       {
-        "qNo":"3",
-        "question":" निम्न में से कब ग्रीष्म ओलंपिक खेल बाधित रहा?",
-        "options":[
-          {"id":"a","value":" 1912"},
-          {"id":"b","value":" 1952"},
-          {"id":"c","value":"1980"},
-          {"id":"d","value":"1988"},
-          {"id":"e","value":"1988"}
-        ],
-        "ans":"e",
-        "incorrect":false
+          "qNo": 3,
+          "question": "Where do your live?",
+          "options": [
+              {
+                  "id": "a",
+                  "value": "US"
+              },
+              {
+                  "id": "b",
+                  "value": "London"
+              },
+              {
+                  "id": "c",
+                  "value": "India"
+              },
+              {
+                  "id": "d",
+                  "value": "Brazil"
+              }
+          ],
+          "ans": [
+              "c",
+              "d"
+          ],
+          "status": ""
       }
-    ]
-  },
-  "timeDetails":{
-    "startTime":"10:30",
-    "duration":"30",
-    "status":true,
-    "leftTime":"1"
-  }
+  ],
+  "ts": "040620230830",
+  "status":"Success"
 }
-

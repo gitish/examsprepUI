@@ -3,11 +3,12 @@
       <p style="margin-top: 35px;text-align: justify;">
         <img src="{{examinerDetail?.image}}" class="img-circle profile-img" alt="Cinque Terre" align="left"/> {{examinerDetail?.quote}}
       </p>
-      <div *ngIf="examinerDetail.isValidMeet;then content"></div>
+      <div *ngIf="examinerDetail?.isValidLivelink">
+        <a href="{{examinerDetail?.liveClass}}" class="btn btn-info" role="button" target="_blank">
+          Online Class
+        </a>
+      </div>
   </div>
-  
-  <ng-template #content><a href="https://meet.google.com/bdh-qyna-cxm" class="btn btn-info" role="button" target="_blank">Online Class</a></ng-template>
-
   
       <!-- <p>{{examinerDetail?.signature}}</p> -->
 
@@ -37,7 +38,7 @@
 
   <div id="socialContent" class="text-center" style="padding-top: 30px;">
     <p>Connect me</p>
-    <a *ngFor="let skey of getSocialMap(examinerDetail?.socials)" href="{{examinerDetail.socials[skey]}}" class="pop share-icon share-icon-{{skey}}" style="display: inline-block;"></a>
+    <a *ngFor="let social of examinerDetail?.socials" href="{{social.link}}" class="pop share-icon share-icon-{{social.name}}" style="display: inline-block;"></a>
   </div>
     <div class="container d-flex align-items-left flex-column">
       &nbsp;
