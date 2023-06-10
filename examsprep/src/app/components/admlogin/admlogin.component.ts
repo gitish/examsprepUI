@@ -41,7 +41,7 @@ export class AdmloginComponent implements OnInit {
     } else{
       var formData=this.examinerId+';'+this.password;
       console.log(formData);
-      this.subscription = this.examService.postValidateUser(formData).subscribe(message => {
+      this.subscription = this.examService.postValidateUserAdmin(formData).subscribe(message => {
         console.log(message);
         this.globalData.adminLoginDetail=message;
         this.router.navigate(['/ng/admin/manage']);

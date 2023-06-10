@@ -156,7 +156,7 @@ export class ExamComponent implements OnInit {
     }
 
     var formData={"answers" : ans,"examId":this.config.examId};
-    var result = this.schoolService.postExam(this.schId,formData).subscribe(res=>{
+    var result = this.schoolService.postExamResult(this.schId,formData).subscribe(res=>{
       if(res){
         clearInterval(this.countDownTimer);
         this.submitModal.show();

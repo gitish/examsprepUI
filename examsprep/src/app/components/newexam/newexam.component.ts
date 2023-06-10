@@ -130,7 +130,7 @@ export class NewexamComponent
     }
     console.log("ans: " + data);
     var formData={"name":this.personName,"mobile":this.personMobile,"answers" : data};
-    var result = this.examService.postExam(formData,this.examinerId,this.config.examId).subscribe(res=>{
+    var result = this.examService.postExamResult(formData,this.examinerId,this.config.examId).subscribe(res=>{
       if(res){
         console.log(res);
         this.submitModal.show();

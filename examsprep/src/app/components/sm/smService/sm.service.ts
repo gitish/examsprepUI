@@ -84,7 +84,7 @@ export class SchoolService {
       );
   }
 
-  postExam(schId,data){
+  postExamResult(schId,data){
     return this.httpService.postApi(`sm/api/${schId}/exam`,data,null,"subq-req-resp")
       .pipe(
         tap(res=>{

@@ -28,7 +28,7 @@
     <div class="col-sm-12 exam-panel">
       <select name="repeatSelect" [(ngModel)]="examId" id="repeatSelect" class="oldExamSelect">
         <option value="0">select one exam</option>
-        <option *ngFor="let opt of data"  value="{{opt.id}}">{{opt.name}}</option>
+        <option *ngFor="let opt of data"  value="{{opt.id}}">{{opt.id}}</option>
       </select>
       <div class="btn-group" style="margin-left:10px;">
         <a  (click)= "getOldExam()"   class="btn btn-info" role="button">Show</a>

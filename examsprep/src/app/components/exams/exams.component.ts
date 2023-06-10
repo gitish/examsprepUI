@@ -28,9 +28,10 @@ export class ExamsComponent implements OnInit {
 
   getExaminerProfiles(){
     this.subscription = this.examService.getExaminerProfile().subscribe(message => {
-      console.log(message);
+      console.log("profile: " + message);
       this.results=message;
       this.results.push(this.defaultuser);
+      localStorage.setItem("examinerId",message["profileId"]);
     },err=>{throw err;});
   }
 

@@ -60,7 +60,6 @@ export class ExaminerComponent implements OnInit {
   }
   ngOnInit(){
     this.getExaminerDetails();
-    console.log(this.cookeService.get("test"));
   }
 
   getIPAddress(){
@@ -83,6 +82,7 @@ export class ExaminerComponent implements OnInit {
           liveClass:message["liveClass"],
           isValidLivelink:message["liveClass"]!=''?true:false
         },
+        localStorage.setItem("examinerId",message["profileId"]);
         this.getQuestionsList(this.examinerDetail.profileId);
       }
       

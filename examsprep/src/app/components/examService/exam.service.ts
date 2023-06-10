@@ -14,46 +14,43 @@ export class ExamService {
   ) { }
 
   getExaminerProfile(): Observable<any[]> {
-    return this.getApiResponse(`v1/examiner/profile`,"examinerProfiles");
+    return this.getApiResponse(`web/examiners`,"examinerProfiles");
   }
 
   getExaminer(examinerId): Observable<any[]> {
-    return this.getApiResponse(`v1/examiner/${examinerId}`,"examiner");
+    return this.getApiResponse(`web/examiner?id=${examinerId}`,"examiner");
   }
 
   getExamList(examinerId): Observable<any[]> {
-    return this.getApiResponse(`v1/question/list/${examinerId}`,"queList");
+    return this.getApiResponse(`web/exams/schedule`,"queList");
   }
 
   getAllExamDetails(examinerId): Observable<any[]> {
-    return this.getApiResponse(`v1/exam/${examinerId}`,"queList");
+    return this.getApiResponse(`web/exams/schedule`,"queList");
   }
 
+  //this service is for admin
   getPaperList(examinerId): Observable<any[]> {
-    return this.getApiResponse(`v1/admin/${examinerId}/paperlist`,"paperlist");
+    return this.getApiResponse(`/web/paper/list`,"paperlist");
   }
   getExamInProgress(examinerId): Observable<any[]> {
-    return this.getApiResponse(`v1/question/examInProgress/${examinerId}`,"questions");
+    return this.getApiResponse(`web/exams/current`,"questions");
   }
 
   getExamFinished(examinerId,examId): Observable<any[]> {
-    return this.getApiResponse(`v1/question/oldExam/${examinerId}/${examId}`,"questions");
-  }
-
-  setExam(examinerId,paperId,examId){
-    console.log(examinerId+","+paperId+","+examId);
-    return this.getApiResponse(`v1/admin/setExam/${examinerId}/${paperId}/${examId}`,"questions");
+    return this.getApiResponse(`/web/exams/schedule/${examId}`,"questions");
   }
 
   getPaperDetails(examinerId,paperId){
-    return this.getApiResponse(`v1/exam/paper/${examinerId}/${paperId}`,"questions");
+    return this.getApiResponse(`web/paper?id=${paperId}`,"questions");
   }
 
   deleteExam(examinerId,examId){
-    return this.getApiResponse(`v1/exam/delete/${examinerId}/${examId}`,"questions");
+    return this.getApiResponse(`web/exam/delete/${examId}`,"questions");
   }
 
   getApiResponse(url,mockFile){
+    //this.httpService.httpOptions 
     return this.httpService.getApi(url,mockFile)
     .pipe(
       tap(res => {
@@ -64,42 +61,42 @@ export class ExamService {
     );
   }
 
-  postApiResponse(url,data,mockFile){
-      return this.httpService.postApi(url,data,null,mockFile)
-        .pipe(
-          tap(res=>{
-            if(res){
-              return res;
-            }
-          })
-        )
-    }
+  setExam(data){
+    return this.postApiResponse(`web/exam`,data,"questions");
+  }
 
-  postValidateUser(data){
-    return this.postApiResponse(`v1/admin/login`,data,"subq-req-resp");
+  postValidateUserAdmin(data){
+    return this.postApiResponse(`web/admin/login`,data,"subq-req-resp");
   }
 
   postPaper(data,examinerId){
-    console.log("examinerId:"+examinerId);
-    return this.postApiResponse(`v1/admin/v1/previeworsave/${examinerId}`,data,"subq-req-resp");
+    return this.postApiResponse(`/web/paper`,data,"subq-req-resp");
   }
 
-  postExam(data,examinerId,examId){
-    console.log("questionId:"+examId);
-    return this.postApiResponse(`v1/question/submitResult/${examinerId}/${examId}`,data,"subq-req-resp");
+  postExamResult(data,examinerId,examId){
+    return this.postApiResponse(`web/exams/saveAnswer`,data,"subq-req-resp");
   }
 
   authenticateUser(examinerId,loginData) {
-    console.log("loginData:"+JSON.stringify(loginData));
-    return this.postApiResponse(`v1/exam/user/login/${examinerId}`,loginData,"user");
+    return this.postApiResponse(`web/user/login`,loginData,"user");
   }
   createUser(examinerId,loginData) {
-    console.log("loginData:"+JSON.stringify(loginData));
-    return this.postApiResponse(`v1/exam/user/create/${examinerId}`,loginData,"user");
+    return this.postApiResponse(`web/user/register`,loginData,"user");
   }
 
   submitMessage(data){
-    return this.postApiResponse(`common/message`,data,"subq-req-resp");
+    return this.postApiResponse(`web/user/message`,data,"subq-req-resp");
+  }
+
+  postApiResponse(url,data,mockFile){
+    return this.httpService.postApi(url,data,null,mockFile)
+      .pipe(
+        tap(res=>{
+          if(res){
+            return res;
+          }
+        })
+      )
   }
 
 }

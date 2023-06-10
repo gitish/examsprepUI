@@ -264,8 +264,9 @@ export class AdminComponent implements OnInit {
     this.previewModel.hide()
   }
   scheduleExam(){
-    var examId = [this.getScheduledExamTime(),this.duration].join("-");
-    var result = this.examService.setExam(this.examinerId,this.paperId,examId).subscribe(res=>{
+    var data = JSON.stringify({"id":this.getScheduledExamTime(),"paperId":this.paperId,"duration":this.duration},undefined, 2)
+    var obj = JSON.parse(data);
+    var result = this.examService.setExam(obj).subscribe(res=>{
       if(res){
         this.lstExams.push(res);
         console.log(this.lstExams);

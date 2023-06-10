@@ -11,26 +11,26 @@ import { Router } from '@angular/router';
 export class HttpService {
   public API_URL = environment.apiUrl;
 	public isMasterMockTrue = environment.isMasterMockTrue;
-  ipAddress = '';
+  	ipAddress = '';
 	public httpOptions;
 	constructor(
 		private http: HttpClient,private router:Router
-	) {
-		this.setHeaders();
-	}
+	) {}
 
 	private setHeaders(contentType?) {
-		const token = localStorage.getItem("token") != null ? localStorage.getItem("token") : "";
+		const authorization = localStorage.getItem("authorization") != null ? localStorage.getItem("authorization") : "";
+		const examinerId = localStorage.getItem("examinerId") != null ? localStorage.getItem("examinerId") : "";
 		this.httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': contentType || 'application/json',
-				'Authorization': token
+				'Authorization': authorization,
+				"examinerId" : examinerId
 			})
 		};
 	}
 	public getApi(url: string, mockFileName?: string, isMockTrue: boolean = false) {
-		if (this.httpOptions !== null)
-			this.setHeaders();
+		this.setHeaders();
+		console.log("headers:" + JSON.stringify(this.httpOptions));
 		if (this.isMasterMockTrue || isMockTrue) {
 			return this.http.get(`assets/mockJSON/${mockFileName}.json`);
 		} else {
