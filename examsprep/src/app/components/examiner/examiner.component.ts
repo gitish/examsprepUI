@@ -76,7 +76,7 @@ export class ExaminerComponent implements OnInit {
           profileId:message["profileId"],
           image:message["image"],
           quote:message["quote"],
-          signature : message["signatue"],
+          signature : message["signature"],
           socials:message["socials"],
           examtime:message["examtime"],
           liveClass:message["liveClass"],
@@ -125,8 +125,8 @@ export class ExaminerComponent implements OnInit {
       }
 
       var loginDeta={
-        "mobile":this.personMobile,
-        "pass":this.personPassword,
+        "phone":this.personMobile,
+        "pwd":this.personPassword,
         "ip" : this.ipAddress,
         "deviceType": this.deviceInfo.deviceType
       };
@@ -150,9 +150,9 @@ export class ExaminerComponent implements OnInit {
         return;
       }
       var loginDeta={
-        "mobile":this.personMobile,
+        "phone":this.personMobile,
         "name":this.personName,
-        "pass":this.personPassword,
+        "pwd":this.personPassword,
         "ip" : this.ipAddress,
         "deviceType": this.deviceInfo.deviceType
       };

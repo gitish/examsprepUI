@@ -38,7 +38,7 @@ export class ExamService {
   }
 
   getExamFinished(examinerId,examId): Observable<any[]> {
-    return this.getApiResponse(`/web/exams/schedule/${examId}`,"questions");
+    return this.getApiResponse(`web/exams/schedule/${examId}`,"questions");
   }
 
   getPaperDetails(examinerId,paperId){
