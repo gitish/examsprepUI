@@ -37,14 +37,14 @@ export class AdmloginComponent implements OnInit {
 
   validate(){
     if(this.globalData.adminLoginDetail!=null){
-      this.router.navigate(['/ng/admin/manage']);
+      this.router.navigate(['/ng/admin/home']);
     } else{
       var formData=this.examinerId+';'+this.password;
       console.log(formData);
       this.subscription = this.examService.postValidateUserAdmin(formData).subscribe(message => {
         console.log(message);
         this.globalData.adminLoginDetail=message;
-        this.router.navigate(['/ng/admin/manage']);
+        this.router.navigate(['/ng/admin/home']);
       },err=>{throw err;});
     }
   }

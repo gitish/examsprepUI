@@ -1,0 +1,30 @@
+[{
+  "id": 1,
+  "name": "Shailja Kumari",
+  "status": "inactive",
+  "phone": "7440781385",
+  "email": "",
+  "pwd": "123456"
+ },{
+  "id": 3,
+  "name": "anish shail",
+  "status": "active",
+  "phone": "7440781385",
+  "email": "",
+  "pwd": "123456"
+ },{
+  "id": 2,
+  "name": "Sushma shail",
+  "status": "",
+  "phone": "7440781385",
+  "email": "",
+  "pwd": "123456"
+ },{
+  "id": 4,
+  "name": "Anshuman Suman",
+  "status": "inctive",
+  "phone": "7440781385",
+  "email": "",
+  "pwd": "123456"
+ }
+]

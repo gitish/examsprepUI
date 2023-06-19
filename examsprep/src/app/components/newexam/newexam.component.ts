@@ -23,6 +23,7 @@ export class NewexamComponent
   isAvail: boolean;
   personName = '';
   personMobile = '';
+  userId = '';
   timeleft= '';
   @Input() name: string;
   filtersForm: FormGroup;
@@ -62,7 +63,8 @@ export class NewexamComponent
   onSubmit() {
     if(this.globalData.loginDetail) {
       this.personName= this.globalData.loginDetail?.name;
-      this.personMobile= this.globalData.loginDetail?.mobile;
+      this.personMobile= this.globalData.loginDetail?.phone;
+      this.userId=this.globalData.loginDetail?.id
       this.submitQuestion();
     } else {
       this.messageforpopupinfo = 'Seems You are logged out. Login again to submit your answers';
@@ -71,7 +73,7 @@ export class NewexamComponent
   }
 
   getQuestionsList(){
-    this.activatedRoute.params.pipe(switchMap((p:Params)=> this.examService.getExamList(p['examinerId']))).subscribe(
+    this.examService.getExamList().subscribe(
       message => {
         if(message["status"]== "Failure"){
           this.isAvail=false;
@@ -91,9 +93,9 @@ export class NewexamComponent
     const controller = this.filtersForm.get('cifName');
     return controller.touched && controller.errors && controller.errors.required;
   }
-
+  
   getQuestions(){
-    this.activatedRoute.params.pipe(switchMap((p:Params)=> this.examService.getExamInProgress(p['examinerId']))).subscribe(
+    this.examService.getExamInProgress().subscribe(
       message => {
         if(message["status"]== "Failure"){
           this.isAvail=false;
@@ -108,7 +110,10 @@ export class NewexamComponent
           };
           this.startTimeCountDown(this.config.timeLeft,new Date().getTime());
         }
-      },err=>{throw err;}
+      },err=>{
+        this.getQuestionsList();
+        throw err;
+      }
     );
   }
 
@@ -129,10 +134,10 @@ export class NewexamComponent
         }
     }
     console.log("ans: " + data);
-    var formData={"name":this.personName,"mobile":this.personMobile,"answers" : data};
-    var result = this.examService.postExamResult(formData,this.examinerId,this.config.examId).subscribe(res=>{
+    var formData={"userId":this.userId,"ans" : data};
+    console.log(formData);
+    var result = this.examService.postExamResult(formData,this.config.examId).subscribe(res=>{
       if(res){
-        console.log(res);
         this.submitModal.show();
       }
     },err=>{
@@ -180,6 +185,13 @@ export class NewexamComponent
         clearInterval(x);
       }
     },1000);
+  }
+
+ 
+  submitFeedback(){
+    this.submitModal.hide()
+    console.log("/ng/feedback/"+this.personMobile+"/"+this.personName)
+    this.router.navigate(['/ng/feedback/'+this.personMobile+"/"+this.personName]);
   }
 
   getOption(){

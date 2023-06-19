@@ -1,0 +1,26 @@
+<app-page-header></app-page-header>
+<div class="col-sm-12">
+    User Details
+  </div>
+  <div class="col-sm-12">
+    
+    <div class="row m-3 border rounded" *ngFor="let user of users">
+        <div class="col-sm-6 w-90">
+            <div><strong>{{user?.name}}</strong></div>
+            <div>{{user?.phone}}</div>
+        </div>
+        <div class="col-sm-6 w-10" *ngIf="user?.status === 'active'">
+            <span (click)="deleteUser(user?.id)">
+                <i class="fas fa-times-circle"></i>
+            </span>
+            <input type="checkbox" value="{{user?.id}}" (change)="checkValue($event,user?.id)" checked/> 
+        </div>
+        <div class="col-sm-6 w-10" *ngIf="user?.status != 'active'">
+            <span (click)="deleteUser(user?.id)">
+                <i class="fas fa-times-circle"></i>
+            </span>
+            <input type="checkbox" value="{{user?.id}}" (change)="checkValue($event,user?.id)"/> 
+        </div>   
+    </div>
+  </div>
+  

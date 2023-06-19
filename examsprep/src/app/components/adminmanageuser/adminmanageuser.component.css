@@ -1,0 +1,10 @@
+.m-3 {
+    margin: 0.5rem !important;
+}
+
+.col-sm-6 {
+    position: relative;
+    width: 100%;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}

@@ -3,8 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './components/index/index.component';
 import { ExamsComponent } from './components/exams/exams.component';
 import { AboutComponent } from './components/about/about.component';
-import { AdminComponent } from './components/admin/admin.component';
+import { AdminpaperComponent } from './components/adminpaper/adminpaper.component';
 import { AdmloginComponent } from './components/admlogin/admlogin.component';
+import { AdminhomeComponent } from './components/adminhome/adminhome.component';
+import { AdminmanageuserComponent } from './components/adminmanageuser/adminmanageuser.component';
+
 import { ContactComponent } from './components/contact/contact.component';
 import { ExaminerComponent } from './components/examiner/examiner.component';
 import { OldexamComponent } from './components/oldexam/oldexam.component';
@@ -20,6 +23,7 @@ import { EditorComponent } from './components/editor/editor.component';
 import { ExampreviewComponent } from './components/sm/exampreview/exampreview.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 
+
 const routes: Routes = [
  { path:'show', component: ShowComponent},
  { path:'ng/editor', component: EditorComponent},
@@ -29,11 +33,10 @@ const routes: Routes = [
  { path: 'ng/feedback/:userId/:userName', component: FeedbackComponent },
  { path: 'ng/about', component: AboutComponent },
  { path: 'ng/contact', component: ContactComponent},
- { path: 'ng/admin/manage', component: AdminComponent},
- { path: 'ng/admin', component: AdmloginComponent},
  { path: 'ng/examiner/:profileId', component: ExaminerComponent },
  { path: 'ng/oldexam', component:  OldexamComponent},
  { path: 'ng/oldexam/:examinerId/:examId', component: OldexamComponent },
+ // school
  { path: 'ng/newexam/:examinerId', component:  NewexamComponent},
  { path: 'ng/sc/home', component:  ListComponent},
  { path: 'ng/sm/:schId', component:  ProfileComponent},
@@ -41,7 +44,12 @@ const routes: Routes = [
  { path: 'ng/sm/:schId/exam', component:  ExamComponent},
  { path: 'ng/sm/:schId/examview', component:  ExamviewComponent},
  { path: 'ng/sm/:schId/result', component:  ResultComponent},
- { path: 'ng/sm/exampreview/:examinerId/:examId',component:ExampreviewComponent}
+ { path: 'ng/sm/exampreview/:examinerId/:examId',component:ExampreviewComponent},
+// admin page
+ { path: 'ng/admin/user', component: AdminmanageuserComponent},
+ { path: 'ng/admin/paper', component: AdminpaperComponent},
+ { path: 'ng/admin', component: AdmloginComponent},
+ { path: 'ng/admin/home', component: AdminhomeComponent}
 ];
 
 @NgModule({

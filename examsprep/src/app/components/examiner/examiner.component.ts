@@ -83,14 +83,14 @@ export class ExaminerComponent implements OnInit {
           isValidLivelink:message["liveClass"]!=''?true:false
         },
         localStorage.setItem("examinerId",message["profileId"]);
-        this.getQuestionsList(this.examinerDetail.profileId);
+        this.getQuestionsList();
       }
       
     );
   }
 
-  getQuestionsList(profileId){
-    this.subscription = this.examService.getExamList(profileId).subscribe(
+  getQuestionsList(){
+    this.subscription = this.examService.getExamList().subscribe(
       message => {
         if(message["status"]== "Failure"){
           this.isAvail=false;
@@ -134,6 +134,7 @@ export class ExaminerComponent implements OnInit {
         message => {
           this.msgType="btn-danger";
           if(message["status"]== "active"){
+            console.log("login:"+ JSON.stringify(message))
             this.globalData.loginDetail=message;
             this.loginModal.hide();
             this.router.navigate([this.redirectUrl]);

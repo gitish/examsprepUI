@@ -1,89 +1,69 @@
 {
-  "id": "2",
-  "title": "Paper for Darago",
-  "questions": [
-      {
-          "qNo": 1,
-          "question": "What is your name dear friend?",
-          "options": [
-              {
-                  "id": "a",
-                  "value": "shail"
-              },
-              {
-                  "id": "b",
-                  "value": "test"
-              },
-              {
-                  "id": "c",
-                  "value": "best"
-              },
-              {
-                  "id": "d",
-                  "value": "none"
-              }
-          ],
-          "ans": [
-              "b",
-              "c"
-          ],
-          "remarks": "This is the one by which you are being called",
-          "status": ""
-      },
-      {
-          "qNo": 2,
-          "question": "Where do your live?",
-          "options": [
-              {
-                  "id": "a",
-                  "value": "US"
-              },
-              {
-                  "id": "b",
-                  "value": "London"
-              },
-              {
-                  "id": "c",
-                  "value": "India"
-              },
-              {
-                  "id": "d",
-                  "value": "Brazil"
-              }
-          ],
-          "ans": [
-              "a"
-          ],
-          "status": ""
-      },
-      {
-          "qNo": 3,
-          "question": "Where do your live?",
-          "options": [
-              {
-                  "id": "a",
-                  "value": "US"
-              },
-              {
-                  "id": "b",
-                  "value": "London"
-              },
-              {
-                  "id": "c",
-                  "value": "India"
-              },
-              {
-                  "id": "d",
-                  "value": "Brazil"
-              }
-          ],
-          "ans": [
-              "c",
-              "d"
-          ],
-          "status": ""
-      }
-  ],
-  "ts": "040620230830",
-  "status":"Success"
+    "id": "202306160820",
+    "title": "Paper for Darago",
+    "questions": [
+        {
+            "qNo": 1,
+            "question": "What is your name dear friend? don't worry",
+            "options": [
+                {
+                    "id": "a",
+                    "value": "shail"
+                },
+                {
+                    "id": "b",
+                    "value": "test"
+                },
+                {
+                    "id": "c",
+                    "value": "best"
+                },
+                {
+                    "id": "d",
+                    "value": "none"
+                }
+            ],
+            "ans": [
+                "b",
+                "c"
+            ],
+            "remark": "",
+            "status": ""
+        },
+        {
+            "qNo": 2,
+            "question": "Where do your live?",
+            "options": [
+                {
+                    "id": "a",
+                    "value": "US"
+                },
+                {
+                    "id": "b",
+                    "value": "London"
+                },
+                {
+                    "id": "c",
+                    "value": "India"
+                },
+                {
+                    "id": "d",
+                    "value": "Brazil"
+                }
+            ],
+            "ans": [
+                "a",
+                "d"
+            ],
+            "remark": "",
+            "status": ""
+        }
+    ],
+    "ts": "040620230830",
+    "timeDetails": {
+        "startTime": "202306160820",
+        "duration": "60",
+        "status": true,
+        "leftTime": "9m18s"
+    }
 }

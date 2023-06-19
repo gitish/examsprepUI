@@ -38,7 +38,7 @@ export class OldexamComponent{
   }
 
   getQuestions(){
-    this.activatedRoute.params.pipe(switchMap((p:Params) => this.examService.getExamFinished(p['examinerId'],p['examId']))).subscribe(
+    this.activatedRoute.params.pipe(switchMap((p:Params) => this.examService.getExamFinished(p['examId']))).subscribe(
       message => {
         console.log(message);
         if(message["status"]== "Failure"){

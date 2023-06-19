@@ -35,7 +35,8 @@ export class AdminComponent implements OnInit {
   paperData:any;
   paperDetails:any;
   paperId='';
-  question='';
+  
+
   opt1='';
   opt2='';
   opt3='';
@@ -53,125 +54,92 @@ export class AdminComponent implements OnInit {
   @ViewChild('previewModel') previewModel: ModalDirective;
   @ViewChild('editModel') editModel: ModalDirective;
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
-    view: CalendarView = CalendarView.Month;
+  view: CalendarView = CalendarView.Month;
 
-    CalendarView = CalendarView;
+  CalendarView = CalendarView;
 
-    viewDate: Date = new Date();
+  viewDate: Date = new Date();
 
-    modalData: {
-      action: string;
-      event: CalendarEvent;
-    };
+  modalData: {
+    action: string;
+    event: CalendarEvent;
+  };
 
-    actions: CalendarEventAction[] = [
-      {
-        label: '<i class="fas fa-fw fa-pencil-alt"></i>',
-        a11yLabel: 'Edit',
-        onClick: ({ event }: { event: CalendarEvent }): void => {
-          this.handleEvent('Edited', event);
-        },
-      }
-    ];
-
-    refresh: Subject<any> = new Subject();
-
-    events: CalendarEvent = {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
+  actions: CalendarEventAction[] = [
+    {
+      label: '<i class="fas fa-fw fa-pencil-alt"></i>',
+      a11yLabel: 'Edit',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.handleEvent('Edited', event);
       },
-      draggable: true,
-    };
+    }
+  ];
 
-    activeDayIsOpen: boolean = true;
+  refresh: Subject<any> = new Subject();
 
-    constructor(private modal: NgbModal,
-                private examService: ExamService,
-                private router: Router,
-                private activatedRoute : ActivatedRoute,
-                private globalData:GlobalData) {}
+  events: CalendarEvent = {
+    start: subDays(startOfDay(new Date()), 1),
+    end: addDays(new Date(), 1),
+    title: 'A 3 day event',
+    color: colors.red,
+    actions: this.actions,
+    allDay: true,
+    resizable: {
+      beforeStart: true,
+      afterEnd: true,
+    },
+    draggable: true,
+  };
 
-    dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-      if (isSameMonth(date, this.viewDate)) {
-        if (
-          (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-          events.length === 0
-        ) {
-          this.activeDayIsOpen = false;
-        } else {
-          this.activeDayIsOpen = true;
-        }
-        this.viewDate = date;
+  activeDayIsOpen: boolean = true;
+
+  constructor(private modal: NgbModal,
+              private examService: ExamService,
+              private router: Router,
+              private activatedRoute : ActivatedRoute,
+              private globalData:GlobalData) {}
+
+  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+    if (isSameMonth(date, this.viewDate)) {
+      if (
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+        events.length === 0
+      ) {
+        this.activeDayIsOpen = false;
+      } else {
+        this.activeDayIsOpen = true;
       }
+      this.viewDate = date;
     }
+  }
 
-    handleEvent(action: string, event: CalendarEvent): void {
-      this.modalData = { event, action };
-      this.modal.open(this.modalContent, { size: 'lg' });
-    }
+  handleEvent(action: string, event: CalendarEvent): void {
+    this.modalData = { event, action };
+    this.modal.open(this.modalContent, { size: 'lg' });
+  }
 
-    setView(view: CalendarView) {
-      this.view = view;
-    }
+  setView(view: CalendarView) {
+    this.view = view;
+  }
 
-    closeOpenMonthViewDay() {
-      this.activeDayIsOpen = false;
-    }
+  closeOpenMonthViewDay() {
+    this.activeDayIsOpen = false;
+  }
+  
   ngOnInit(): void {
     console.log("init call" + this.globalData.adminLoginDetail)
     if(this.globalData.adminLoginDetail==null){
       this.router.navigate(['/ng/admin']);
     } else{
       this.examinerId=this.globalData.adminLoginDetail.profileId;
-      this.getPaperList();
-      this.getExamList();
     }
-  }
-  add(){
-    if(this.question.trim()==""){
-      return;
-    }
-    this.count++;
-    var qna={
-      "qNo": this.count,
-      "question": this.question,
-      "options":[
-        {"id":"a","value":this.opt1},
-        {"id":"b","value":this.opt2},
-        {"id":"c","value":this.opt3},
-        {"id":"d","value":this.opt4},
-        {"id":"e","value":this.opt5}
-      ],
-      "ans":this.ans,
-      "remarks":this.remarks
-    }
-    this.qnAs.push(qna);
-    this.question='';
-    this.opt1='';
-    this.opt2='';
-    this.opt3='';
-    this.opt4='';
-    this.opt5='';
-    this.remarks='';
-    this.ans='';
-    this.result=JSON.stringify(this.qnAs,undefined, 2)
-    console.log(this.qnAs);
   }
 
-  previewQuestions(){
-    if(this.qnAs.length>0){
-      this.previewModel.show();
-    }
-  }
+  
+
+  
   getPaperList(){
-    var result = this.examService.getPaperList(this.examinerId).subscribe(res=>{
+    var result = this.examService.getPaperList().subscribe(res=>{
       if(res){
         this.paperData=res;
       }
@@ -182,7 +150,7 @@ export class AdminComponent implements OnInit {
   }
 
   getExamList(){
-    var result = this.examService.getAllExamDetails(this.examinerId).subscribe(res=>{
+    var result = this.examService.getAllExamDetails().subscribe(res=>{
       if(res){
         this.lstExams=res;
         console.log(this.lstExams);
@@ -195,7 +163,7 @@ export class AdminComponent implements OnInit {
 
   deleteExam(examId){
     console.log("delete exam : " + examId);
-    var result = this.examService.deleteExam(this.examinerId,examId).subscribe(res=>{
+    var result = this.examService.deleteExam(examId).subscribe(res=>{
       if(res){
         console.log(res);
         if(res.result=='Success'){
@@ -224,27 +192,10 @@ export class AdminComponent implements OnInit {
     this.result='';
     this.qnAs=[];
   }
-  Save(){
-    var data = JSON.stringify({"qnAs":this.qnAs},undefined, 2)
-    var obj = JSON.parse(data);
-    var result = this.examService.postPaper(obj,this.examinerId).subscribe(res=>{
-      if(res){
-        console.log(res);
-        this.result='';
-        this.qnAs=[];
-        var paperId=res.paperId;
-        this.paperData.push({"id":paperId,"name":paperId});
-        alert("Paper Saved with Id: " + paperId);
-        this.previewModel.hide();
-      }
-    },err=>{
-      console.log(err);
-      throw err;
-    })
-  }
+  
 
   preview(){
-    var result = this.examService.getPaperDetails(this.examinerId,this.paperId).subscribe(res=>{
+    var result = this.examService.getPaperDetails(this.paperId).subscribe(res=>{
       if(res){
         this.paperDetails=res;
         console.log(this.paperDetails);
@@ -258,11 +209,7 @@ export class AdminComponent implements OnInit {
     })
     console.log("show preview")
   }
-  cancelPreview(){
-    this.isPreviewOnly=false;
-    this.qnAs=[]
-    this.previewModel.hide()
-  }
+  
   scheduleExam(){
     var data = JSON.stringify({"id":this.getScheduledExamTime(),"paperId":this.paperId,"duration":this.duration},undefined, 2)
     var obj = JSON.parse(data);

@@ -44,6 +44,11 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { AdmloginComponent } from './components/admlogin/admlogin.component';
+import { AdminhomeComponent } from './components/adminhome/adminhome.component';
+import { AdminpaperComponent } from './components/adminpaper/adminpaper.component';
+import { AdminsetexamComponent } from './components/adminsetexam/adminsetexam.component';
+import { AdminmanageuserComponent } from './components/adminmanageuser/adminmanageuser.component';
+import { AdminresultComponent } from './components/adminresult/adminresult.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +74,12 @@ import { AdmloginComponent } from './components/admlogin/admlogin.component';
     EditorComponent,
     ExampreviewComponent,
     FeedbackComponent,
-    AdmloginComponent
+    AdmloginComponent,
+    AdminhomeComponent,
+    AdminpaperComponent,
+    AdminsetexamComponent,
+    AdminmanageuserComponent,
+    AdminresultComponent
   ],
   exports: [
     MatButtonModule,

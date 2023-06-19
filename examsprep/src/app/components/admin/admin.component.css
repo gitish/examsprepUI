@@ -13,6 +13,11 @@
     max-width: 500px;
     height: 200px
 }
+.admin-input-qr {
+  width: 100%;
+  max-width: 500px;
+  min-height: 500px
+}
 .admin-input-r {
     width: 100%;
     max-width: 500px;

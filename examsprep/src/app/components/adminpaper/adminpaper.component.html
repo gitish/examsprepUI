@@ -1,0 +1,39 @@
+<app-page-header></app-page-header>
+<div class="col-sm-12">
+    Papers Raw
+  </div>
+  <div class="col-sm-12">
+    <textarea class="admin-input-qr form-control" [(ngModel)]='rawquestion' placeholder="Question"></textarea>
+  </div>
+  <div class="col-sm-12 btn-group adm-button">
+    <button type="button"  class="btn btn-info" (click)="previewQuestions()">Preview</button>
+  </div>
+
+<div bsModal #previewModel="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+   aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="admin-modal-body" style="color: #196f77;">
+      <div style="height:500px;overflow: auto;">
+        <div class="row" *ngFor="let qna of qnAs">
+          <div class="col-sm-12">{{qna?.qNo}}. {{qna?.question}}</div>
+          <div class="col-sm-12" *ngFor="let opt of qna.options">
+            <div class="col-sm-12">
+              {{opt?.id}}. {{opt?.value}} <span *ngIf="opt?.id===qna?.ans"> <i class="fas fa-check"></i></span>
+            </div>
+          </div>
+          <div class="col-sm-12" *ngIf="qna?.remarks">
+            Remark: {{qna?.remarks}}
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 btn-group adm-button">
+        <button type="button" class="btn btn-info" (click)="submit()">Save</button>
+        <button type="button" class="btn btn-info" (click)="previewModel.hide()">Cancel</button> &nbsp;
+      </div>
+    </div>
+  </div>
+  <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>

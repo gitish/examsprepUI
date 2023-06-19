@@ -21,31 +21,35 @@ export class ExamService {
     return this.getApiResponse(`web/examiner?id=${examinerId}`,"examiner");
   }
 
-  getExamList(examinerId): Observable<any[]> {
+  getExamList(): Observable<any[]> {
     return this.getApiResponse(`web/exams/schedule`,"queList");
   }
 
-  getAllExamDetails(examinerId): Observable<any[]> {
+  getAllExamDetails(): Observable<any[]> {
     return this.getApiResponse(`web/exams/schedule`,"queList");
   }
 
   //this service is for admin
-  getPaperList(examinerId): Observable<any[]> {
+  getPaperList(): Observable<any[]> {
     return this.getApiResponse(`/web/paper/list`,"paperlist");
   }
-  getExamInProgress(examinerId): Observable<any[]> {
-    return this.getApiResponse(`web/exams/current`,"questions");
+  getExamInProgress(): Observable<any[]> {
+    return this.getApiResponse(`web/exams/current`,"questions_err");
   }
 
-  getExamFinished(examinerId,examId): Observable<any[]> {
+  getExamFinished(examId): Observable<any[]> {
     return this.getApiResponse(`web/exams/schedule/${examId}`,"questions");
   }
 
-  getPaperDetails(examinerId,paperId){
+  getPaperDetails(paperId){
     return this.getApiResponse(`web/paper?id=${paperId}`,"questions");
   }
 
-  deleteExam(examinerId,examId){
+  getUserDetails(){
+    return this.getApiResponse(`web/students`,"users");
+  }
+
+  deleteExam(examId){
     return this.getApiResponse(`web/exam/delete/${examId}`,"questions");
   }
 
@@ -69,19 +73,25 @@ export class ExamService {
     return this.postApiResponse(`web/admin/login`,data,"subq-req-resp");
   }
 
-  postPaper(data,examinerId){
-    return this.postApiResponse(`/web/paper`,data,"subq-req-resp");
+  postPaper(data){
+    return this.postApiResponse(`/web/paper`,data,"paperResp");
   }
 
-  postExamResult(data,examinerId,examId){
-    return this.postApiResponse(`web/exams/saveAnswer`,data,"subq-req-resp");
+  // remove this
+  postExamResult(data,examId){
+    return this.postApiResponse(`web/exams/saveAnswer?examId=${examId}`,data,"subq-req-resp");
   }
 
   authenticateUser(examinerId,loginData) {
     return this.postApiResponse(`web/user/login`,loginData,"user");
   }
+  
   createUser(examinerId,loginData) {
     return this.postApiResponse(`web/user/register`,loginData,"user");
+  }
+
+  manageUser(userOperation) {
+    return this.postApiResponse(`web/user/manage`,userOperation,"useractive");
   }
 
   submitMessage(data){
