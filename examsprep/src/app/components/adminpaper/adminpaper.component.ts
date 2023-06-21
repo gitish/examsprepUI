@@ -21,8 +21,6 @@ export class AdminpaperComponent implements OnInit {
   paperId='';
   rawquestion='';
 
-  examinerId = '';
-
   @ViewChild('previewModel') previewModel: ModalDirective;
 
   constructor(private modal: NgbModal,
@@ -35,9 +33,7 @@ export class AdminpaperComponent implements OnInit {
     console.log("init call" + this.globalData.adminLoginDetail)
     if(this.globalData.adminLoginDetail==null){
       this.router.navigate(['/ng/admin']);
-    } else{
-      this.examinerId=this.globalData.adminLoginDetail.profileId;
-    }
+    } 
   }
 
   parseData(){

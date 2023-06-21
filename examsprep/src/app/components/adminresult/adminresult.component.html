@@ -1,1 +1,39 @@
-<p>adminresult works!</p>
+<app-page-header></app-page-header>
+<div class="row m-3 border rounded">
+    <div class="col-sm-12 w-100">
+        <div class="w-30 exam-d">
+            Select Exam
+        </div>
+        <div class="w-40 exam-d">
+            <select [(ngModel)]="examId">
+                <option selected="selected">201020231230</option>
+                <option>201020231210</option>
+                <option>201020231030</option>
+                <option>201020231130</option>
+                <option>201020241230</option>
+            </select>
+        </div>
+        <div class="w-30 exam-d" style="text-align: right; font-size: small;">
+            Total: {{exam_result.score.length}}
+        </div>
+    </div>
+</div>
+
+<div class="row m-2 border rounded">
+    <div class="exam-d w-100 rounded" *ngFor="let e of exam_result?.score">
+        <div class="w-50 exam-d name">
+            {{e.name}}
+        </div>
+        <div class="w-50 exam-d border">
+            <div class="exam-d marks w-15">
+                {{e.marks}}%
+            </div>
+            <div class="exam-d w-85">
+                <div class="progress" style="height:15px;" [ngStyle]="{'width':e.marks+'%'}"></div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+

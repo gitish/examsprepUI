@@ -43,8 +43,11 @@ export class AdmloginComponent implements OnInit {
       console.log(formData);
       this.subscription = this.examService.postValidateUserAdmin(formData).subscribe(message => {
         console.log(message);
-        this.globalData.adminLoginDetail=message;
-        this.router.navigate(['/ng/admin/home']);
+        if(message["id"]!=undefined){
+          this.globalData.adminLoginDetail=message;
+          localStorage.setItem("authorization",message["token"]);
+          this.router.navigate(['/ng/admin/home']);
+        }
       },err=>{throw err;});
     }
   }

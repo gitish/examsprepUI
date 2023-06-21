@@ -1,5 +1,4 @@
 
-  
   .admin-input {
       width: 100%;
       max-width: 500px;
@@ -55,4 +54,11 @@
     width: 99%;
     min-height:300px;
   }
+
+  .col-sm-12 {
+    position: relative;
+    width: 100%;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
   

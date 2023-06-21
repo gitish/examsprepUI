@@ -17,10 +17,12 @@ export class AdminhomeComponent implements OnInit {
     private globalData:GlobalData) { }
 
   ngOnInit(): void {
+    if(this.globalData.adminLoginDetail==null){
+      this.router.navigate(['/ng/admin']);
+    } 
   }
 
   routerLink(url): void {
-    console.log("Redirection to :" + url)
     this.router.navigate([url]);
   }
 }

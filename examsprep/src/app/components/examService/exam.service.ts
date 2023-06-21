@@ -22,16 +22,20 @@ export class ExamService {
   }
 
   getExamList(): Observable<any[]> {
-    return this.getApiResponse(`web/exams/schedule`,"queList");
+    return this.getApiResponse(`web/exams/schedule`,"examList");
+  }
+
+  deleteExam(examId){
+    return this.getApiResponse(`web/exam/delete/${examId}`,"examList");
   }
 
   getAllExamDetails(): Observable<any[]> {
-    return this.getApiResponse(`web/exams/schedule`,"queList");
+    return this.getApiResponse(`web/exams/schedule`,"examList");
   }
 
   //this service is for admin
   getPaperList(): Observable<any[]> {
-    return this.getApiResponse(`/web/paper/list`,"paperlist");
+    return this.getApiResponse(`/web/paper/list`,"paperList");
   }
   getExamInProgress(): Observable<any[]> {
     return this.getApiResponse(`web/exams/current`,"questions_err");
@@ -49,9 +53,14 @@ export class ExamService {
     return this.getApiResponse(`web/students`,"users");
   }
 
-  deleteExam(examId){
-    return this.getApiResponse(`web/exam/delete/${examId}`,"questions");
+  getLastExam(){
+    return this.getApiResponse(`web/exam/last`,"lastexam");
   }
+  getExaResult(){
+    return this.getApiResponse(`web/exam/last`,"examResult");
+  }
+
+  
 
   getApiResponse(url,mockFile){
     //this.httpService.httpOptions 
@@ -70,7 +79,7 @@ export class ExamService {
   }
 
   postValidateUserAdmin(data){
-    return this.postApiResponse(`web/admin/login`,data,"subq-req-resp");
+    return this.postApiResponse(`web/admin/login`,data,"user");
   }
 
   postPaper(data){
@@ -79,7 +88,7 @@ export class ExamService {
 
   // remove this
   postExamResult(data,examId){
-    return this.postApiResponse(`web/exams/saveAnswer?examId=${examId}`,data,"subq-req-resp");
+    return this.postApiResponse(`web/exams/saveAnswer?examId=${examId}`,data,"examAns");
   }
 
   authenticateUser(examinerId,loginData) {
@@ -95,7 +104,7 @@ export class ExamService {
   }
 
   submitMessage(data){
-    return this.postApiResponse(`web/user/message`,data,"subq-req-resp");
+    return this.postApiResponse(`web/user/message`,data,"message");
   }
 
   postApiResponse(url,data,mockFile){

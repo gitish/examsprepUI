@@ -7,6 +7,8 @@ import { AdminpaperComponent } from './components/adminpaper/adminpaper.componen
 import { AdmloginComponent } from './components/admlogin/admlogin.component';
 import { AdminhomeComponent } from './components/adminhome/adminhome.component';
 import { AdminmanageuserComponent } from './components/adminmanageuser/adminmanageuser.component';
+import { AdminsetexamComponent } from './components/adminsetexam/adminsetexam.component';
+import { AdminresultComponent } from './components/adminresult/adminresult.component';
 
 import { ContactComponent } from './components/contact/contact.component';
 import { ExaminerComponent } from './components/examiner/examiner.component';
@@ -49,7 +51,10 @@ const routes: Routes = [
  { path: 'ng/admin/user', component: AdminmanageuserComponent},
  { path: 'ng/admin/paper', component: AdminpaperComponent},
  { path: 'ng/admin', component: AdmloginComponent},
- { path: 'ng/admin/home', component: AdminhomeComponent}
+ { path: 'ng/admin/home', component: AdminhomeComponent},
+ { path: 'ng/admin/exam', component: AdminsetexamComponent},
+ { path: 'ng/admin/result', component: AdminresultComponent}
+ 
 ];
 
 @NgModule({

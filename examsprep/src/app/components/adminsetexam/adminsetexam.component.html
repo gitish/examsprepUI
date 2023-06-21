@@ -1,1 +1,80 @@
-<p>adminsetexam works!</p>
+<app-page-header></app-page-header>
+<div class="col-sm-12">
+    Schedule Exam
+</div>
+<div class="row m-3 border rounded">
+    <div class="col-sm-12">
+        Select Paper
+    </div>
+    <div class="col-sm-12 w-60">
+        <select [(ngModel)]="paperId">
+            <option *ngFor="let p of paperList"> {{p.id}}</option>
+        </select>
+    </div>
+    <div class="col-sm-12 w-40">
+        <button type="button"  class="btn btn-info" (click)="previewPaper()">Preview</button>
+    </div>
+</div>
+<div class="row m-3 border rounded">
+    <div class="col-sm-12">
+        Enter Date (DD/MM/YYYY)
+        <input type="text" placeholder="dd/mm/yyyy" [(ngModel)]="examDate"/>
+    </div>
+    <div class="col-sm-12">&nbsp;</div>
+    <div class="col-sm-12 w-60">
+        Time (24 Hour) 
+        <input type="text" placeholder="22:30" [(ngModel)]="examTime" size="6"/> 
+    </div>
+    <div class="col-sm-12 w-40">
+        Minutes 
+        <input type="text" placeholder="15" [(ngModel)]="duration" size="6"/> 
+    </div>
+    <div class="col-sm-12">&nbsp;</div>
+    <div class="col-sm-12">
+        <button type="button"  class="btn btn-info" (click)="setExam()">Set Exam</button>
+    </div>
+</div>
+<div class="row m-3 border rounded">
+    <div class="col-sm-12">
+        Scheduled Exams:<i class="fas fa-info-circle blue" title="For exam edit, delete and create new one!!"></i>
+    </div>
+    <div class="exam-d w-50 border rounded" *ngFor="let e of examList">
+        <div class="w-85 exam-d ">
+            {{e.id}}
+        </div>
+        <div class="w-15 exam-d">
+            <span (click)="deleteExam(e.id)">
+                <i class="fas fa-times-circle red"></i>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div bsModal #previewModel="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+   aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="admin-modal-body" style="color: #196f77;">
+        <div style="height:500px;overflow: auto;">
+          <div class="row" *ngFor="let qna of qnAs">
+            <div class="col-sm-12">{{qna?.qNo}}. {{qna?.question}}</div>
+            <div class="col-sm-12" *ngFor="let opt of qna.options">
+              <div class="col-sm-12">
+                {{opt?.id}}. {{opt?.value}} <span *ngIf="qna?.ans.includes(opt?.id)"> <i class="fas fa-check"></i></span>
+              </div>
+            </div>
+            <div class="col-sm-12" *ngIf="qna?.remarks">
+              Remark: {{qna?.remarks}}
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 btn-group adm-button">
+          <button type="button" class="btn btn-info" (click)="previewModel.hide()">Cancel</button> &nbsp;
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+<!-- /.modal-dialog -->
+</div>
+

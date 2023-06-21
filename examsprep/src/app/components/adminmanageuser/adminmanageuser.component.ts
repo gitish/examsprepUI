@@ -1,13 +1,8 @@
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, TemplateRef } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap/modal';
-import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
-import { Subject } from 'rxjs';
-import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ExamService} from '../examService/exam.service';
 import { Router, Params } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
 import { GlobalData } from '../../global';
 
 @Component({
@@ -16,7 +11,6 @@ import { GlobalData } from '../../global';
   styleUrls: ['./adminmanageuser.component.css']
 })
 export class AdminmanageuserComponent implements OnInit {
-  examinerId = '';
   users=[];
   isAvail=true;
   constructor(private modal: NgbModal,
@@ -26,13 +20,10 @@ export class AdminmanageuserComponent implements OnInit {
     private globalData:GlobalData) { }
 
   ngOnInit(): void {
-    this.getUserDetails()
-    /*
     if(this.globalData.adminLoginDetail==null){
       this.router.navigate(['/ng/admin']);
-    } else{
-      this.examinerId=this.globalData.adminLoginDetail.profileId;
-    }*/
+    } 
+    this.getUserDetails()
   }
   
   getUserDetails() {

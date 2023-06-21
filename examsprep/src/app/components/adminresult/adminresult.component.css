@@ -1,0 +1,27 @@
+.exam-d{
+    position: relative;
+    width: 100%;
+    float: left;
+}
+.col-sm-12 {
+    position: relative;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+.progress {
+    background-color: #28a745;
+    border-radius: 0.2rem;
+}
+
+.marks {
+    font-size: xx-small;
+    text-align: center;
+    width:auto;
+    float:left;
+}
+
+.name {
+    font-size: small;
+}
