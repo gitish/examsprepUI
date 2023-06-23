@@ -11,7 +11,7 @@ export class AppComponent {
   showFooter: boolean = false;
   header:true;
   footer:true;
-  headlessURL = ["/ng/editor","/ng/sm/exampreview","/ng/admin"];
+  headlessURL = ["/ng/editor","/ng/admin"];
   ngOnInit() {
 
   }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NewExamService } from 'src/app/services/newExam.service';
 import { ExamService} from '../examService/exam.service';
 import { Subscription } from 'rxjs';
 import { FormControl } from '@angular/forms';
@@ -20,7 +19,7 @@ export class OldexamComponent{
   examinerId: any;
   isAvail: boolean;
 
-  constructor(private dataservice: NewExamService,
+  constructor(
               private activatedRoute : ActivatedRoute,
               private examService: ExamService) {
     this.activatedRoute.params.subscribe(params => {
@@ -44,7 +43,7 @@ export class OldexamComponent{
         if(message["status"]== "Failure"){
           this.isAvail=false;
         }else{
-          this.results = message["questions"];
+          this.results = message["qnAs"];
           this.isAvail=true;
         }
       },err=>{throw err;}

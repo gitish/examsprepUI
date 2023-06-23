@@ -14,8 +14,8 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 export class AdminsetexamComponent implements OnInit {
   examTime=""
   examDate=""
-  duration=15
-  paperId=1
+  duration:""
+  paperId:""
   qnAs=[]
   examList=[]
   paperList=[]
@@ -38,6 +38,7 @@ export class AdminsetexamComponent implements OnInit {
     this.examService.getPaperList().subscribe(res=>{
       if(res){
         this.paperList=res
+        this.paperId=res[0]["id"]
       }
     },err=>{
       console.log(err);
@@ -45,7 +46,7 @@ export class AdminsetexamComponent implements OnInit {
     })
   }
   getExamList(){
-    this.examService.getExamList().subscribe(res=>{
+    this.examService.getExamList(false).subscribe(res=>{
       if(res){
         this.examList=res
       }
@@ -58,7 +59,7 @@ export class AdminsetexamComponent implements OnInit {
     this.qnAs=[];
     this.examService.getPaperDetails(this.paperId).subscribe(res=>{
       if(res){
-        this.qnAs=res["questions"]
+        this.qnAs=res["qnAs"]
         this.previewModel.show();
       }
     },err=>{
@@ -68,8 +69,23 @@ export class AdminsetexamComponent implements OnInit {
   }
   
   setExam(){
-    console.log("" + this.examDate + this.examTime + this.duration)
-    //TODO implement this
+    var examId=this.examDate.split("/").join("")+this.examTime.replace(":","");
+    console.log("ExamId:"+ examId)
+    var data = {
+      "id": examId, 
+      "paperId":this.paperId,
+      "duration":this.duration
+    }
+    
+    console.log(data)
+    this.examService.setExam(data).subscribe(res=>{
+      if(res){
+        this.examList=res
+      }
+    },err=>{
+      console.log(err);
+      throw err;
+    })
 
   }
   deleteExam(e){

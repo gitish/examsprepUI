@@ -17,6 +17,7 @@ export class AdminresultComponent implements OnInit {
   duration=15
   paperId=1
   examId=""
+  examlist=[]
   exam_result={
     "total":0,
     "score":[]
@@ -31,23 +32,24 @@ export class AdminresultComponent implements OnInit {
     if(this.globalData.adminLoginDetail==null){
       this.router.navigate(['/ng/admin']);
     } 
-    this.getLastExam()
+    this.getExamList()
   }
 
-  getLastExam(){
-    this.examService.getLastExam().subscribe(res=>{
-      if(res){
-        this.examId=res["examId"]
-        this.getExaResult()
-      }
-    },err=>{
-      console.log(err);
-      throw err;
-    })
+  getExamList(){
+    this.examService.getExamList().subscribe(
+      message => {
+        if(message["status"]== "Failure"){
+        }else{
+          this.examlist = message;
+          this.examId=message[0]["id"]
+          this.getExaResult()
+        }
+      },err=>{throw err;}
+    );
   }
 
   getExaResult(){
-    this.examService.getExaResult().subscribe(res=>{
+    this.examService.getExaResult(this.examId).subscribe(res=>{
       if(res){
         this.exam_result=res
         this.exam_result.score = this.exam_result.score.sort((a, b) => (a.marks > b.marks) ? -1 : 1);
@@ -56,11 +58,5 @@ export class AdminresultComponent implements OnInit {
       console.log(err);
       throw err;
     })
-  }
-  setExam(){
-    console.log("" + this.examDate + this.examTime + this.duration)
-  }
-  deleteExam(e){
-    console.log("Delete Exam: " + e)
   }
 }

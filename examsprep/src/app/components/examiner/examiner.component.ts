@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { NewExamService } from 'src/app/services/newExam.service';
 import { ExamService} from '../examService/exam.service';
 import { Subscription } from 'rxjs';
 import { Router, Params } from '@angular/router';
@@ -36,7 +35,7 @@ export class ExaminerComponent implements OnInit {
 
   @ViewChild('loginModal') loginModal: ModalDirective;
   @ViewChild('newUserModal') newUserModal: ModalDirective;
-  constructor(private dataservice: NewExamService,private router: Router,
+  constructor(private router: Router,
               private activatedRoute : ActivatedRoute,
               private examService: ExamService,
               private deviceService: DeviceDetectorService,

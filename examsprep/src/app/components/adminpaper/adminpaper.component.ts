@@ -110,11 +110,11 @@ export class AdminpaperComponent implements OnInit {
   submit(){
     var data = JSON.stringify({"qnAs":this.qnAs},undefined, 2)
     var obj = JSON.parse(data);
-    var result = this.examService.postPaper(obj).subscribe(res=>{
+    this.examService.postPaper(obj).subscribe(res=>{
       if(res){
         console.log(res);
         this.qnAs=[];
-        var paperId=res.paperId;
+        var paperId=res["id"];
         alert("Paper Saved with Id: " + paperId);
         this.previewModel.hide();
       }
@@ -123,6 +123,10 @@ export class AdminpaperComponent implements OnInit {
       throw err;
     })
   }
+  clear(){ 
+    this.rawquestion=''
+  }
+
   cancelPreview(){
     this.qnAs=[]
     this.previewModel.hide()

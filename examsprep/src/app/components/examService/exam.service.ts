@@ -21,8 +21,8 @@ export class ExamService {
     return this.getApiResponse(`web/examiner?id=${examinerId}`,"examiner");
   }
 
-  getExamList(): Observable<any[]> {
-    return this.getApiResponse(`web/exams/schedule`,"examList");
+  getExamList(flag:boolean=true): Observable<any[]> {
+    return this.getApiResponse(`web/exams/schedule?ex=${flag}`,"examList");
   }
 
   deleteExam(examId){
@@ -35,7 +35,7 @@ export class ExamService {
 
   //this service is for admin
   getPaperList(): Observable<any[]> {
-    return this.getApiResponse(`/web/paper/list`,"paperList");
+    return this.getApiResponse(`web/paper/list`,"paperList");
   }
   getExamInProgress(): Observable<any[]> {
     return this.getApiResponse(`web/exams/current`,"questions_err");
@@ -56,8 +56,8 @@ export class ExamService {
   getLastExam(){
     return this.getApiResponse(`web/exam/last`,"lastexam");
   }
-  getExaResult(){
-    return this.getApiResponse(`web/exam/last`,"examResult");
+  getExaResult(examId){
+    return this.getApiResponse(`web/exam/result/${examId}`,"examResult");
   }
 
   
@@ -75,15 +75,15 @@ export class ExamService {
   }
 
   setExam(data){
-    return this.postApiResponse(`web/exam`,data,"questions");
+    return this.postApiResponse(`web/exam`,data,"examList");
   }
 
   postValidateUserAdmin(data){
-    return this.postApiResponse(`web/admin/login`,data,"user");
+    return this.postApiResponse(`web/admin/login`,data,"loginResp");
   }
 
   postPaper(data){
-    return this.postApiResponse(`/web/paper`,data,"paperResp");
+    return this.postApiResponse(`web/paper`,data,"paperResp");
   }
 
   // remove this

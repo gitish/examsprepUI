@@ -7,7 +7,6 @@ import { ExamService} from '../examService/exam.service';
 import { Router , Params, ActivatedRoute} from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { NewExamService } from 'src/app/services/newExam.service';
 import{ GlobalData } from '../../global';
 
 @Component({
@@ -37,7 +36,6 @@ export class NewexamComponent
   constructor(private fBuilder: FormBuilder,
               private examService: ExamService,
               private router: Router,
-              private dataservice: NewExamService,
               private activatedRoute : ActivatedRoute,
               private globalData:GlobalData) {
 
@@ -101,10 +99,10 @@ export class NewexamComponent
           this.isAvail=false;
           this.getQuestionsList();
         }else{
-          this.results = message["questions"];
+          this.results = message["qnAs"];
           this.isAvail=true;
           this.config = {
-            totalItems: message["questions"].length,
+            totalItems: message["qnAs"].length,
             timeLeft: message["timeDetails"]?.leftTime,
             examId: message["id"]
           };

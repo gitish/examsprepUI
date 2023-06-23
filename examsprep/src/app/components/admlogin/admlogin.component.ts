@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NewExamService } from 'src/app/services/newExam.service';
 import { ExamService} from '../examService/exam.service';
 import { Subscription } from 'rxjs';
 import { Router, Params } from '@angular/router';
@@ -19,7 +18,7 @@ export class AdmloginComponent implements OnInit {
   examinerId = '';
   password='';
   loginDetail:any;
-  constructor(private dataservice: NewExamService,private router: Router,
+  constructor(private router: Router,
                 private activatedRoute : ActivatedRoute,
                 private examService: ExamService,
                 private globalData:GlobalData)  { }
@@ -39,11 +38,13 @@ export class AdmloginComponent implements OnInit {
     if(this.globalData.adminLoginDetail!=null){
       this.router.navigate(['/ng/admin/home']);
     } else{
-      var formData=this.examinerId+';'+this.password;
-      console.log(formData);
+      var formData= {
+        "profileId":this.examinerId,
+        "pwd":this.password
+      } 
       this.subscription = this.examService.postValidateUserAdmin(formData).subscribe(message => {
         console.log(message);
-        if(message["id"]!=undefined){
+        if(message["token"]!=undefined){
           this.globalData.adminLoginDetail=message;
           localStorage.setItem("authorization",message["token"]);
           this.router.navigate(['/ng/admin/home']);
