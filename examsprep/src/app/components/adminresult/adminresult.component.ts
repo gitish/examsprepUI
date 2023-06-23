@@ -36,7 +36,7 @@ export class AdminresultComponent implements OnInit {
   }
 
   getExamList(){
-    this.examService.getExamList().subscribe(
+    this.examService.getExamList(false).subscribe(
       message => {
         if(message["status"]== "Failure"){
         }else{
