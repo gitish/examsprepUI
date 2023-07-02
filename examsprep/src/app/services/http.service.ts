@@ -30,7 +30,6 @@ export class HttpService {
 	}
 	public getApi(url: string, mockFileName?: string, isMockTrue: boolean = false) {
 		this.setHeaders();
-		console.log("headers:" + JSON.stringify(this.httpOptions));
 		if (this.isMasterMockTrue || isMockTrue) {
 			return this.http.get(`assets/mockJSON/${mockFileName}.json`);
 		} else {

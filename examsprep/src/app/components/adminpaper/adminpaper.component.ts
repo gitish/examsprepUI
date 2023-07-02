@@ -46,7 +46,7 @@ export class AdminpaperComponent implements OnInit {
     this.rawquestion.split("\n").forEach(line => {
       line=line.trim();
       if(line!=""){
-        if(line.toLowerCase().indexOf("que:")==0){
+        if(line.toLowerCase().indexOf("que:")==0||line.toLowerCase().indexOf("q:")==0){
           if(qno>0){
             this.pushQnA(qno,question,options,ans,remark)
             question=""
@@ -54,14 +54,14 @@ export class AdminpaperComponent implements OnInit {
             ans=""
             remark=""
           }
-          question = line.substring(4);
+          question = line.substring(line.indexOf(":")+1).trim();
           qno++;
-        } else if(line.toLowerCase().indexOf("opt:")==0){
-          options=line.substring(4);
-        } else if(line.toLowerCase().indexOf("ans:")==0){
-          ans=line.substring(4)
-        } else if(line.toLowerCase().indexOf("rem:")==0){
-          remark=line.substring(4)
+        } else if(line.toLowerCase().indexOf("opt:")==0||line.toLowerCase().indexOf("o:")==0){
+          options=line.substring(line.indexOf(":")+1).trim();
+        } else if(line.toLowerCase().indexOf("ans:")==0||line.toLowerCase().indexOf("a:")==0){
+          ans=line.substring(line.indexOf(":")+1).trim();
+        } else if(line.toLowerCase().indexOf("rem:")==0||line.toLowerCase().indexOf("r:")==0){
+          remark=line.substring(line.indexOf(":")+1).trim();
         } else{
           question=question+"\n"+line
         }

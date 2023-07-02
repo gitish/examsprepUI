@@ -27,12 +27,18 @@ export class ExamsComponent implements OnInit {
   }
 
   getExaminerProfiles(){
-    this.subscription = this.examService.getExaminerProfile().subscribe(message => {
-      console.log("profile: " + message);
+    this.examService.getExaminerProfile().subscribe(message => {
       this.results=message;
       this.results.push(this.defaultuser);
       localStorage.setItem("examinerId",message["profileId"]);
     },err=>{throw err;});
   }
 
+  examinerClick(id){
+    var path="/ng/contact"
+    if(id!=undefined){
+      path="/ng/examiner/"+id;
+    }
+    this.router.navigate([path]);
+  }
 }

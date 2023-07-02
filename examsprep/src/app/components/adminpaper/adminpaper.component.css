@@ -60,5 +60,10 @@
     width: 100%;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
-}
-  
+  }
+  .preeque {
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0rem;
+    font-size: xx-small;
+  }
